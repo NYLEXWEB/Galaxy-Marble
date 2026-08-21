@@ -166,7 +166,7 @@ export default function ReviewSection() {
             href={GOOGLE_RATING_SUMMARY.googleMapsReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-4 bg-[#A8875A] hover:bg-[#8F7148] text-white font-bold text-xs uppercase tracking-[0.18em] rounded-xl inline-flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shrink-0 cursor-pointer relative z-10"
+            className="px-7 py-4 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-[0.18em] rounded-xl inline-flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shrink-0 cursor-pointer relative z-10"
           >
             <GoogleIcon className="w-4 h-4" />
             <span>Read Google Maps Reviews</span>

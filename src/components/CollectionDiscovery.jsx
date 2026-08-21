@@ -13,7 +13,7 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
             <span className="w-6 h-px bg-stone-accent/40" />
             <span>Slab Collections</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-gradient-gold">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
             Six families <em className="italic font-light opacity-80">of stone,</em> <br />
             one standard.
           </h2>
@@ -78,7 +78,7 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
               <span className="w-6 h-px bg-amber-500" />
               <span>Application Guide</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-light text-gradient-gold">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-gradient-gold">
               Select Stone by Architectural Use
             </h3>
           </div>

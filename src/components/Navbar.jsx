@@ -93,11 +93,7 @@ export default function Navbar({
             {/* Get a Quote Primary CTA */}
             <button
               onClick={onOpenQuoteModal}
-              className={`hidden md:flex items-center gap-2 px-5 py-2.5 text-[11px] font-bold tracking-[0.18em] uppercase rounded-lg transition-all shadow-sm cursor-pointer ${
-                isScrolled
-                  ? "bg-[#171717] hover:bg-[#A8875A] text-white"
-                  : "bg-[#A8875A] hover:bg-[#8F7148] text-white"
-              }`}
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 text-[11px] font-bold tracking-[0.18em] uppercase rounded-lg transition-all shadow-sm cursor-pointer bg-amber-600 hover:bg-amber-700 text-white"
             >
               <MessageSquare className="w-3.5 h-3.5 text-white" />
               <span>Get a Quote</span>
@@ -143,7 +139,7 @@ export default function Navbar({
                   setMobileMenuOpen(false);
                   onOpenQuoteModal();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-xs font-bold tracking-[0.18em] uppercase bg-[#A8875A] hover:bg-[#8F7148] text-white rounded-lg transition-all"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-xs font-bold tracking-[0.18em] uppercase bg-amber-600 hover:bg-amber-700 text-white rounded-lg transition-all"
               >
                 <MessageSquare className="w-4 h-4 text-white" />
                 <span>Get a Quote</span>

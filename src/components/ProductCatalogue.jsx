@@ -86,7 +86,7 @@ export default function ProductCatalogue({
               <span className="w-6 h-px bg-amber-500" />
               <span>Full Showroom Inventory</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-gradient-gold">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
               Explore Natural Stone Slabs
             </h2>
             <p className="text-sm text-stone-taupe max-w-xl font-sans font-light leading-relaxed">
