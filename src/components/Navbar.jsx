@@ -19,7 +19,7 @@ export default function Navbar({
   ];
 
   return (
-    <header className="sticky top-3 z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all">
+    <header className="sticky top-0 z-40 pt-2 sm:pt-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all">
       <div className="bg-[#F5F1EA]/95 backdrop-blur-md border border-[#DED8CF] shadow-lg rounded-xl px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           

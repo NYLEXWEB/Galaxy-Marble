@@ -14,25 +14,28 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-[560px] lg:min-h-[640px] flex items-center overflow-hidden border-b border-[#DED8CF]/80 bg-[#F5F1EA]">
+    <section id="hero" className="relative min-h-[560px] lg:min-h-[660px] flex items-center overflow-hidden border-b border-[#DED8CF]/80 bg-[#F5F1EA] -mt-20 sm:-mt-24 pt-28 sm:pt-36 lg:pt-40">
       
-      {/* 1. Right-Side Background Image with Subtle Left Edge Blend */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-7/12 overflow-hidden pointer-events-none">
+      {/* 1. Background Image with Seamless Top Flow & Soft Left Blend */}
+      <div className="absolute inset-0 lg:left-auto lg:right-0 w-full lg:w-7/12 overflow-hidden pointer-events-none">
         <img
           src="/images/granite_kitchen_hero_1787249036600.png"
           alt="Galaxy Granite & Marble Showroom"
-          className="w-full h-full object-cover object-center opacity-95"
+          className="w-full h-full object-cover object-right lg:object-center opacity-85 lg:opacity-95"
         />
-        {/* Subtle, soft edge blending on the left edge so text remains readable without obscuring the image */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F5F1EA]" />
+        {/* Soft edge blending gradient on Desktop (right to left) */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F5F1EA]" />
+        
+        {/* Warm ambient scrim on Mobile so text sits cleanly on top without needing a box card container */}
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-[#F5F1EA] via-[#F5F1EA]/80 to-[#F5F1EA]/60" />
       </div>
 
       {/* 2. Main Content Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-14 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Column: Clean Editorial Copy & Actions (7 cols) */}
-          <div className="lg:col-span-7 bg-[#F5F1EA]/90 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none p-6 sm:p-8 lg:p-0 rounded-2xl border border-[#DED8CF]/60 lg:border-none shadow-sm lg:shadow-none space-y-6">
+          {/* Left Column: Clean Unboxed Editorial Copy & Actions (7 cols) */}
+          <div className="lg:col-span-7 space-y-6 text-left">
             
             {/* Showroom Location Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#171717]/5 border border-[#A8875A]/40 text-[11px] font-bold uppercase tracking-[0.2em] text-[#A8875A]">
