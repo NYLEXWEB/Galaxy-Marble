@@ -21,7 +21,7 @@ export default function ProjectShowcase() {
               <span className="w-6 h-px bg-amber-500" />
               <span>Architectural Showcase</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-stone-dark">
+            <h2 className="font-serif text-3xl sm:text-4xl font-light text-gradient-gold">
               Natural Stone in Real Spaces
             </h2>
             <p className="text-sm text-stone-taupe max-w-lg">

@@ -51,7 +51,7 @@ export default function ShowroomLocationSection({ onOpenSiteVisitModal }) {
             <Mail className="w-3.5 h-3.5 text-[#A8875A]" />
             <span>Direct Showroom Enquiries</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#171717]">
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-gradient-gold">
             Get In Touch With Our Experts
           </h2>
           <p className="text-sm text-[#817970] font-sans leading-relaxed">

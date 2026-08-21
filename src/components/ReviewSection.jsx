@@ -43,7 +43,7 @@ export default function ReviewSection() {
               <span>Verified Google Reviews</span>
             </div>
             
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#171717]">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-gradient-gold">
               See What Our Customers Say
             </h2>
 

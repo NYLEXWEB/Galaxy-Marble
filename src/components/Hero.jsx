@@ -44,7 +44,7 @@ export default function Hero() {
             {/* Headline */}
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
               Natural Granite &amp; Marble. <br />
-              <span className="italic font-normal text-amber-500">Designed for Beautiful Spaces.</span>
+              <span className="italic font-normal text-amber-600">Designed for Beautiful Spaces.</span>
             </h1>
 
             {/* Description */}
