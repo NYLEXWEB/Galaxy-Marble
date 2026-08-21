@@ -176,3 +176,18 @@ html {
 .animate-marquee-right:hover {
   animation-play-state: paused;
 }
+
+/* Minimal Luxury Text Gradient for Headings */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #171717 15%, #2B2621 60%, #A8875A 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold-dark {
+  background: linear-gradient(135deg, #FFFFFF 40%, #F5F1EA 70%, #A8875A 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
