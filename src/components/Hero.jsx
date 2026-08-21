@@ -14,7 +14,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden border-b border-stone-border bg-stone-dark -mt-20 sm:-mt-24 pt-28 sm:pt-36 lg:pt-40">
+    <section id="hero" className="relative min-h-[100dvh] lg:min-h-[660px] flex items-center overflow-hidden border-b border-stone-border bg-stone-dark -mt-20 sm:-mt-24 pt-28 sm:pt-36 lg:pt-40">
       
       {/* 1. Full-screen Background Image (Daytime Exterior Showroom Photo) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
