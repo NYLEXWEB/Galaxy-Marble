@@ -302,10 +302,10 @@ export default function ProductCatalogue({
                         {/* Prominent Add to Enquiry List Button */}
                         <button
                           onClick={(e) => handleAddToBasketClick(e, product)}
-                          className={`py-2.5 px-3 rounded-lg text-[10px] font-semibold uppercase tracking-[0.15em] flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs ${
+                          className={`py-2.5 px-3 rounded-lg text-[10px] font-bold uppercase tracking-[0.15em] flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm ${
                             inBasket
-                              ? "bg-emerald-800 text-white border border-emerald-700"
-                              : "bg-stone-accent hover:bg-stone-accent-dark text-stone-bg border border-stone-accent"
+                              ? "bg-[#15803D] text-white border border-[#166534]"
+                              : "bg-[#A8875A] hover:bg-[#8F7148] text-white border border-[#A8875A]"
                           }`}
                         >
                           {inBasket ? (

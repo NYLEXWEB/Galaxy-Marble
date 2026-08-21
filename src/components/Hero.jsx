@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import { MessageSquare, ArrowRight } from "lucide-react";
 import { BUSINESS_CONFIG } from "../config/business";
 import { buildQuoteRequestWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
@@ -31,7 +31,7 @@ export default function Hero() {
           className="hidden lg:block absolute inset-0 w-full h-full object-cover object-right"
         />
         {/* Adaptive Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-stone-dark/65 lg:bg-transparent lg:bg-gradient-to-r lg:from-stone-dark/95 lg:via-stone-dark/50 lg:to-transparent" />
+        <div className="absolute inset-0 bg-stone-dark/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-stone-dark/95 lg:via-stone-dark/60 lg:to-transparent" />
       </div>
 
       {/* 2. Main Content Container */}
@@ -39,39 +39,32 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Clean Unboxed Editorial Copy & Actions (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 text-left text-white">
+          <div className="lg:col-span-7 space-y-6 text-left text-white">
             
-            {/* Showroom Location Pill */}
-            <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-white">
-              <span className="w-6 h-px bg-amber-500" />
-              <span>Est. 1998 · Mukkam's Premier Marble &amp; Granite Showroom</span>
-            </div>
-
             {/* Headline */}
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.05]">
-              The quiet <br />
-              <span className="italic font-light pl-8 sm:pl-16 lg:pl-24 text-amber-500">authority</span> <br />
-              of stone.
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+              Natural Granite &amp; Marble. <br />
+              <span className="italic font-normal text-amber-500">Designed for Beautiful Spaces.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-stone-bg/85 max-w-md leading-relaxed font-sans font-light">
-              Premium Black Galaxy granite, imported Italian white marble slabs, kitchen countertops, and precision staircases directly from our physical showroom address.
+            <p className="text-sm sm:text-base text-stone-bg/85 max-w-xl leading-relaxed font-sans font-light">
+              Discover premium black galaxy granite, imported Italian white marble slabs, kitchen countertops, and precision staircases directly from our Mukkam showroom.
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
               <a
                 href="#catalogue"
-                className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-amber-500 text-stone-dark hover:text-white font-medium text-[11px] uppercase tracking-[0.22em] transition-all duration-300 flex items-center justify-center gap-3 group cursor-pointer border border-white"
+                className="px-6 sm:px-8 py-3.5 sm:py-4 bg-[#A8875A] hover:bg-[#8F7148] text-white font-bold text-xs uppercase tracking-[0.2em] rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-md flex items-center justify-center gap-3 group cursor-pointer"
               >
                 <span>Explore Slabs Collection</span>
-                <ArrowRight className="w-4 h-4 text-stone-dark group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-all" />
               </a>
 
               <button
                 onClick={handleWhatsAppHero}
-                className="px-6 sm:px-7 py-3.5 sm:py-4 bg-transparent hover:bg-white/10 text-white font-medium text-[11px] uppercase tracking-[0.22em] border border-white/30 hover:border-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="px-6 sm:px-7 py-3.5 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-[0.15em] rounded-lg border border-white/20 hover:border-amber-500 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer shadow-xs backdrop-blur-xs"
               >
                 <MessageSquare className="w-4 h-4 text-amber-500" />
                 <span>Get Price on WhatsApp</span>
@@ -79,18 +72,18 @@ export default function Hero() {
             </div>
 
             {/* Quick Metrics Bar */}
-            <div className="pt-6 border-t border-white/15 grid grid-cols-3 gap-6 max-w-lg">
+            <div className="pt-6 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
               <div>
-                <span className="font-serif text-2xl sm:text-3xl font-light text-white">50<span className="text-amber-500 italic font-normal">+</span></span>
-                <span className="block text-[10px] text-stone-bg/60 font-medium uppercase tracking-[0.22em] mt-1.5">Slab Varieties</span>
+                <span className="font-serif text-2xl sm:text-4xl font-bold text-white">50<span className="text-amber-500 font-normal">+</span></span>
+                <span className="block text-[10px] sm:text-[11px] text-stone-bg/60 font-medium uppercase tracking-[0.2em] mt-1">Slab Varieties</span>
               </div>
               <div>
-                <span className="font-serif text-2xl sm:text-3xl font-light text-white">3.8<span className="text-amber-500 font-normal ml-0.5">★</span></span>
-                <span className="block text-[10px] text-stone-bg/60 font-medium uppercase tracking-[0.22em] mt-1.5">Google Reviews</span>
+                <span className="font-serif text-2xl sm:text-4xl font-bold text-white">3.8<span className="text-amber-500 font-normal ml-0.5">★</span></span>
+                <span className="block text-[10px] sm:text-[11px] text-stone-bg/60 font-medium uppercase tracking-[0.2em] mt-1">35 Google Reviews</span>
               </div>
               <div>
-                <span className="font-serif text-2xl sm:text-3xl font-light text-white">Mukkam</span>
-                <span className="block text-[10px] text-stone-bg/60 font-medium uppercase tracking-[0.22em] mt-1.5">Local Showroom</span>
+                <span className="font-serif text-2xl sm:text-4xl font-bold text-white">Mukkam</span>
+                <span className="block text-[10px] sm:text-[11px] text-stone-bg/60 font-medium uppercase tracking-[0.2em] mt-1">Local Showroom</span>
               </div>
             </div>
 

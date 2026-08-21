@@ -142,20 +142,20 @@ export default function ProductDetailModal({
             {/* Add to Enquiry List */}
             <button
               onClick={() => onAddToBasket(product, quantity)}
-              className={`w-full py-2.5 px-4 font-semibold text-xs rounded flex items-center justify-center gap-2 transition-colors cursor-pointer border ${
+              className={`w-full py-3 px-4 font-bold text-xs uppercase tracking-[0.15em] rounded-lg flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm ${
                 isInBasket
-                  ? "bg-stone-accent text-white border-stone-accent"
-                  : "bg-stone-surface hover:bg-stone-border/40 text-stone-dark border-stone-border"
+                  ? "bg-[#15803D] text-white border border-[#166534]"
+                  : "bg-[#A8875A] hover:bg-[#8F7148] text-white border border-[#A8875A]"
               }`}
             >
               {isInBasket ? (
                 <>
-                  <Check className="w-4 h-4" />
+                  <Check className="w-4 h-4 text-white" />
                   <span>Added to Enquiry List</span>
                 </>
               ) : (
                 <>
-                  <Plus className="w-4 h-4 text-stone-accent" />
+                  <Plus className="w-4 h-4 text-white" />
                   <span>Add to Enquiry List</span>
                 </>
               )}

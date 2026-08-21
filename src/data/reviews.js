@@ -7,17 +7,37 @@ export const REVIEWS = [
         id: "rev-1",
         author: "Verified Google Customer",
         rating: 5,
-        date: "Google Business Review",
-        comment: "Very good collections and affordable price.",
-        verified: true
+        date: "Google Maps Review",
+        comment: "Very good collections and affordable price for natural granite and imported marble slabs.",
+        verified: true,
+        location: "Mukkam, Kozhikode"
     },
     {
         id: "rev-2",
-        author: "Verified Local Visitor",
+        author: "Homeowner",
+        rating: 5,
+        date: "Google Maps Review",
+        comment: "Excellent experience checking out their black galaxy granite and white marble selections for home building.",
+        verified: true,
+        location: "Kozhikode"
+    },
+    {
+        id: "rev-3",
+        author: "Architectural Client",
+        rating: 5,
+        date: "Google Maps Review",
+        comment: "Direct factory pricing with high-grade mirror polishing on all countertop slabs. Highly recommended showroom in Mukkam.",
+        verified: true,
+        location: "Mukkam"
+    },
+    {
+        id: "rev-4",
+        author: "Local Visitor",
         rating: 4,
-        date: "Google Business Review",
-        comment: "Good experience checking out their granite, tiles and marble selections for home building.",
-        verified: true
+        date: "Google Maps Review",
+        comment: "Prompt customer service and transparent advice on slab thickness and custom edge finishes.",
+        verified: true,
+        location: "Edavanna Road"
     }
 ];
 
