@@ -1,46 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
-import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { COLLECTIONS, APPLICATION_DISCOVERY } from "../data/collections";
 
 export default function CollectionDiscovery({ onSelectCategory, onSelectApplication }) {
-  const scrollRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-scroll loop for Architectural Use cards
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    let animationFrameId;
-    const scrollSpeed = 0.8; // Smooth px scroll speed per frame
-
-    const step = () => {
-      if (!isPaused && el) {
-        el.scrollLeft += scrollSpeed;
-        // Infinite loop reset when reaching end of scroll
-        if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 2) {
-          el.scrollLeft = 0;
-        }
-      }
-      animationFrameId = requestAnimationFrame(step);
-    };
-
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -260, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 260, behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="collections" className="py-16 sm:py-24 bg-[#FBF9F5] border-b border-[#DED8CF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -106,68 +68,40 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
           ))}
         </div>
 
-        {/* Application-based Discovery Section (Auto-Scrolling & Touch Swipeable Carousel) */}
-        <div className="pt-8 border-t border-[#DED8CF]/60 space-y-6">
+        {/* Application-based Discovery Section (Automatic Continuous Marquee Scroll Towards Left) */}
+        <div className="pt-8 border-t border-[#DED8CF]/60 space-y-6 overflow-hidden">
           
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left space-y-1">
-              <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#A8875A]">
-                Application Guide
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#171717]">
-                Select Stone by Architectural Use
-              </h3>
-            </div>
-
-            {/* Scroll Navigation Arrows */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={scrollLeft}
-                className="p-2.5 rounded-full bg-[#F5F1EA] hover:bg-[#171717] hover:text-white border border-[#DED8CF] transition-colors cursor-pointer"
-                title="Scroll Left"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={scrollRight}
-                className="p-2.5 rounded-full bg-[#F5F1EA] hover:bg-[#171717] hover:text-white border border-[#DED8CF] transition-colors cursor-pointer"
-                title="Scroll Right"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+          <div className="text-center max-w-xl mx-auto space-y-1">
+            <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#A8875A]">
+              Application Guide
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#171717]">
+              Select Stone by Architectural Use
+            </h3>
           </div>
 
-          {/* Auto-scrolling & Swipeable Horizontal Container */}
-          <div
-            ref={scrollRef}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-            className="flex gap-4 overflow-x-auto scrollbar-none py-2 px-1 scroll-smooth snap-x touch-pan-x"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {/* Repeat cards array to ensure smooth continuous marquee loop */}
-            {[...APPLICATION_DISCOVERY, ...APPLICATION_DISCOVERY].map((app, index) => (
-              <div
-                key={`${app.id}-${index}`}
-                onClick={() => onSelectApplication(app.title)}
-                className="flex-none w-52 sm:w-60 p-5 bg-[#F5F1EA] hover:bg-[#171717] border border-[#DED8CF] hover:border-[#A8875A] rounded-xl text-center transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer shadow-xs hover:shadow-lg snap-start"
-              >
-                <div className="w-11 h-11 mx-auto rounded-full bg-[#171717] group-hover:bg-[#A8875A] text-white flex items-center justify-center transition-colors mb-3">
-                  <Sparkles className="w-5 h-5 text-[#A8875A] group-hover:text-white" />
+          {/* Continuous Infinite Automatic Scroll Container (Leftward Marquee) */}
+          <div className="w-full overflow-hidden relative py-2">
+            <div className="animate-marquee-left hover:[animation-play-state:paused] flex gap-4">
+              {/* Duplicate array twice for seamless continuous infinite marquee scroll */}
+              {[...APPLICATION_DISCOVERY, ...APPLICATION_DISCOVERY].map((app, index) => (
+                <div
+                  key={`${app.id}-${index}`}
+                  onClick={() => onSelectApplication(app.title)}
+                  className="w-56 sm:w-64 shrink-0 p-5 bg-[#F5F1EA] hover:bg-[#171717] border border-[#DED8CF] hover:border-[#A8875A] rounded-xl text-center transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer shadow-xs hover:shadow-lg"
+                >
+                  <div className="w-11 h-11 mx-auto rounded-full bg-[#171717] group-hover:bg-[#A8875A] text-white flex items-center justify-center transition-colors mb-3">
+                    <Sparkles className="w-5 h-5 text-[#A8875A] group-hover:text-white" />
+                  </div>
+                  <h4 className="font-serif text-base font-bold text-[#171717] group-hover:text-white transition-colors">
+                    {app.title}
+                  </h4>
+                  <p className="text-xs text-[#817970] group-hover:text-[#DED8CF] mt-1.5 line-clamp-2 leading-relaxed">
+                    {app.description}
+                  </p>
                 </div>
-                <h4 className="font-serif text-base font-bold text-[#171717] group-hover:text-white transition-colors">
-                  {app.title}
-                </h4>
-                <p className="text-xs text-[#817970] group-hover:text-[#DED8CF] mt-1.5 line-clamp-2 leading-relaxed">
-                  {app.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
         </div>
