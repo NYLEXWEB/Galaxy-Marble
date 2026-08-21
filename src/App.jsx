@@ -104,7 +104,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1EA] text-[#222222] font-sans antialiased flex flex-col justify-between selection:bg-[#A8875A] selection:text-white relative">
+    <div className="min-h-screen bg-stone-bg text-stone-text font-sans antialiased flex flex-col justify-between selection:bg-stone-accent selection:text-stone-bg relative">
       
       {/* Top Header & Navigation */}
       <div>

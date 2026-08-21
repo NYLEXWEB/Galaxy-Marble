@@ -52,19 +52,19 @@ export default function CalculatorModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#171717]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-dark/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       
-      <div className="relative bg-[#F5F1EA] border border-[#DED8CF] rounded-lg shadow-2xl max-w-xl w-full overflow-hidden my-8">
+      <div className="relative bg-stone-bg border border-stone-border rounded-lg shadow-2xl max-w-xl w-full overflow-hidden my-8">
         
         {/* Modal Header */}
-        <div className="p-6 bg-[#171717] text-white flex items-center justify-between border-b border-[#333]">
+        <div className="p-6 bg-stone-dark text-white flex items-center justify-between border-b border-stone-border/10">
           <div className="flex items-center gap-2">
-            <Calculator className="w-5 h-5 text-[#A8875A]" />
+            <Calculator className="w-5 h-5 text-stone-accent" />
             <h2 className="font-serif text-xl font-bold">Requirement Calculator</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-[#333] text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-full hover:bg-stone-border/20 text-white transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -74,15 +74,15 @@ export default function CalculatorModal({ isOpen, onClose }) {
         <div className="p-6 space-y-6">
           
           {/* Tab Selector */}
-          <div className="grid grid-cols-3 gap-2 p-1 bg-[#FBF9F5] border border-[#DED8CF] rounded text-xs">
+          <div className="grid grid-cols-3 gap-2 p-1 bg-stone-surface border border-stone-border rounded text-xs">
             {["Kitchen Countertop", "Staircase", "Flooring"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`py-2 px-2 font-medium rounded transition-all cursor-pointer text-center ${
                   activeTab === tab
-                    ? "bg-[#171717] text-white shadow-xs"
-                    : "text-[#222] hover:bg-[#DED8CF]"
+                    ? "bg-stone-dark text-white shadow-xs"
+                    : "text-stone-text hover:bg-stone-border/40"
                 }`}
               >
                 {tab}
@@ -94,7 +94,7 @@ export default function CalculatorModal({ isOpen, onClose }) {
           {activeTab === "Staircase" ? (
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#817970] mb-1">
+                <label className="block text-xs font-semibold text-stone-taupe mb-1">
                   Step Length (ft)
                 </label>
                 <input
@@ -102,12 +102,12 @@ export default function CalculatorModal({ isOpen, onClose }) {
                   step="0.1"
                   value={treadLength}
                   onChange={(e) => setTreadLength(e.target.value)}
-                  className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-sm text-[#171717]"
+                  className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-sm text-stone-dark"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#817970] mb-1">
+                <label className="block text-xs font-semibold text-stone-taupe mb-1">
                   Step Width (ft)
                 </label>
                 <input
@@ -115,26 +115,26 @@ export default function CalculatorModal({ isOpen, onClose }) {
                   step="0.1"
                   value={treadWidth}
                   onChange={(e) => setTreadWidth(e.target.value)}
-                  className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-sm text-[#171717]"
+                  className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-sm text-stone-dark"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#817970] mb-1">
+                <label className="block text-xs font-semibold text-stone-taupe mb-1">
                   No. of Steps
                 </label>
                 <input
                   type="number"
                   value={stepCount}
                   onChange={(e) => setStepCount(e.target.value)}
-                  className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-sm text-[#171717]"
+                  className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-sm text-stone-dark"
                 />
               </div>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#817970] mb-1">
+                <label className="block text-xs font-semibold text-stone-taupe mb-1">
                   Length (ft)
                 </label>
                 <input
@@ -142,12 +142,12 @@ export default function CalculatorModal({ isOpen, onClose }) {
                   step="0.1"
                   value={length}
                   onChange={(e) => setLength(e.target.value)}
-                  className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-sm text-[#171717]"
+                  className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-sm text-stone-dark"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#817970] mb-1">
+                <label className="block text-xs font-semibold text-stone-taupe mb-1">
                   Width (ft)
                 </label>
                 <input
@@ -155,7 +155,7 @@ export default function CalculatorModal({ isOpen, onClose }) {
                   step="0.1"
                   value={width}
                   onChange={(e) => setWidth(e.target.value)}
-                  className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-sm text-[#171717]"
+                  className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-sm text-stone-dark"
                 />
               </div>
             </div>
@@ -163,13 +163,13 @@ export default function CalculatorModal({ isOpen, onClose }) {
 
           {/* Optional Stone Selector */}
           <div>
-            <label className="block text-xs font-semibold text-[#817970] mb-1">
+            <label className="block text-xs font-semibold text-stone-taupe mb-1">
               Preferred Stone (Optional)
             </label>
             <select
               value={selectedProductId}
               onChange={(e) => setSelectedProductId(e.target.value)}
-              className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded p-2.5 text-xs text-[#171717]"
+              className="w-full bg-stone-surface border border-stone-border rounded p-2.5 text-xs text-stone-dark"
             >
               <option value="">-- Select Stone Slab --</option>
               {PRODUCTS.map((p) => (
@@ -179,36 +179,36 @@ export default function CalculatorModal({ isOpen, onClose }) {
           </div>
 
           {/* Live Result Display Box */}
-          <div className="p-4 bg-[#171717] text-white rounded border border-[#A8875A]/40 flex items-center justify-between">
+          <div className="p-4 bg-stone-dark text-white rounded border border-stone-accent/40 flex items-center justify-between">
             <div>
-              <span className="block text-[11px] uppercase tracking-wider text-[#A8875A] font-semibold">
+              <span className="block text-[11px] uppercase tracking-wider text-stone-accent font-semibold">
                 Estimated Area Requirement
               </span>
-              <p className="text-[#817970] text-xs">
+              <p className="text-stone-taupe text-xs">
                 Includes standard fitting buffer
               </p>
             </div>
 
             <div className="text-right">
-              <span className="font-serif text-3xl font-bold text-[#A8875A]">
+              <span className="font-serif text-3xl font-bold text-stone-accent">
                 {finalAreaWithWastage}
               </span>
-              <span className="text-xs text-[#DED8CF] ml-1">sq.ft</span>
+              <span className="text-xs text-stone-border ml-1">sq.ft</span>
             </div>
           </div>
 
           {/* Disclaimer Note */}
-          <div className="p-3 bg-[#FBF9F5] border border-[#DED8CF] rounded text-[11px] text-[#817970] flex items-start gap-2">
-            <AlertCircle className="w-4 h-4 text-[#A8875A] flex-shrink-0 mt-0.5" />
+          <div className="p-3 bg-stone-surface border border-stone-border rounded text-[11px] text-stone-taupe flex items-start gap-2">
+            <AlertCircle className="w-4 h-4 text-stone-accent flex-shrink-0 mt-0.5" />
             <p>{CALCULATOR_DISCLAIMER}</p>
           </div>
 
           {/* Action CTA */}
           <button
             onClick={handleWhatsAppQuote}
-            className="w-full py-3.5 px-4 bg-[#171717] hover:bg-[#A8875A] text-white font-bold text-xs uppercase tracking-widest rounded flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md"
+            className="w-full py-3.5 px-4 bg-stone-dark hover:bg-stone-accent text-white font-bold text-xs uppercase tracking-widest rounded flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md"
           >
-            <MessageSquare className="w-4 h-4 text-[#A8875A]" />
+            <MessageSquare className="w-4 h-4 text-stone-accent" />
             <span>Get Quote on WhatsApp</span>
           </button>
 

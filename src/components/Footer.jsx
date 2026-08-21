@@ -18,7 +18,7 @@ export default function Footer({ onOpenQuoteModal }) {
   };
 
   return (
-    <footer className="bg-[#171717] text-white pt-16 pb-24 lg:pb-12 border-t border-[#333]">
+    <footer className="bg-stone-dark text-white pt-16 pb-24 lg:pb-12 border-t border-stone-border/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Main Footer Row */}
@@ -27,30 +27,30 @@ export default function Footer({ onOpenQuoteModal }) {
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <a href="#hero" className="flex flex-col">
-              <span className="font-serif text-3xl font-bold tracking-tight text-white">
-                GALAXY
+              <span className="font-serif text-3xl font-bold tracking-tight text-white leading-none">
+                GALAXY <span className="italic font-light text-amber-500">Stone</span>
               </span>
-              <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#A8875A] -mt-1">
-                Granite & Marble
+              <span className="text-[9px] tracking-[0.32em] uppercase font-sans font-semibold text-stone-bg/60 mt-1">
+                Marble · Granite · Tile
               </span>
             </a>
 
-            <p className="text-xs text-[#DED8CF] leading-relaxed max-w-sm">
+            <p className="text-xs text-stone-border leading-relaxed max-w-sm">
               Digital Showroom & Product Catalogue for natural granite slabs, imported white marble, kitchen countertops, and staircase stone solutions.
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-[#A8875A] font-semibold">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs text-stone-bg/75 font-semibold">
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
               <span>{BUSINESS_CONFIG.category} • Mukkam, Kerala</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-wider text-[#A8875A]">
+            <h4 className="font-serif text-sm font-light uppercase tracking-wider text-stone-bg/90">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs text-[#DED8CF]">
+            <ul className="space-y-2 text-xs text-stone-border">
               <li><a href="#hero" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#collections" className="hover:text-white transition-colors">Collections</a></li>
               <li><a href="#catalogue" className="hover:text-white transition-colors">Products</a></li>
@@ -62,10 +62,10 @@ export default function Footer({ onOpenQuoteModal }) {
 
           {/* Customer Tools */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-wider text-[#A8875A]">
+            <h4 className="font-serif text-sm font-light uppercase tracking-wider text-stone-bg/90">
               Showroom Tools
             </h4>
-            <ul className="space-y-2 text-xs text-[#DED8CF]">
+            <ul className="space-y-2 text-xs text-stone-border">
               <li>
                 <button onClick={onOpenQuoteModal} className="hover:text-white transition-colors cursor-pointer">
                   Request a Quote
@@ -86,24 +86,24 @@ export default function Footer({ onOpenQuoteModal }) {
 
           {/* Showroom Contacts */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-wider text-[#A8875A]">
+            <h4 className="font-serif text-sm font-light uppercase tracking-wider text-stone-bg/90">
               Showroom Contact
             </h4>
-            <div className="space-y-2 text-xs text-[#DED8CF]">
+            <div className="space-y-2 text-xs text-stone-border">
               <p className="flex items-start gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#A8875A] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <span>{BUSINESS_CONFIG.location.fullAddress}</span>
               </p>
               <p className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-[#A8875A]" />
-                <a href={`tel:${BUSINESS_CONFIG.contact.phoneDisplay}`} className="hover:text-white">
+                <Phone className="w-3.5 h-3.5 text-amber-500" />
+                <a href={`tel:${BUSINESS_CONFIG.contact.phoneDisplay}`} className="hover:text-white transition-colors">
                   {BUSINESS_CONFIG.contact.phoneDisplay}
                 </a>
               </p>
               <div className="pt-2">
                 <button
                   onClick={handleWhatsAppFooter}
-                  className="w-full py-2 px-3 bg-[#A8875A] hover:bg-[#8F7148] text-white text-xs font-bold uppercase tracking-wider rounded flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  className="w-full py-2 px-3 bg-stone-accent hover:bg-stone-accent-dark text-white text-xs font-bold uppercase tracking-wider rounded flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Get Price on WhatsApp</span>
@@ -115,14 +115,14 @@ export default function Footer({ onOpenQuoteModal }) {
         </div>
 
         {/* Bottom Sub-footer */}
-        <div className="pt-8 border-t border-[#333] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#817970]">
+        <div className="pt-8 border-t border-stone-border/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-taupe">
           <div>
             © {new Date().getFullYear()} {BUSINESS_CONFIG.name}. All rights reserved.
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 text-[#DED8CF] hover:text-[#A8875A] transition-colors cursor-pointer"
+            className="flex items-center gap-1 text-stone-border hover:text-white transition-colors cursor-pointer"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

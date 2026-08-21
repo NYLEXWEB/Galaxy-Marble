@@ -76,56 +76,56 @@ export default function ProductCatalogue({
   };
 
   return (
-    <section id="catalogue" className="py-16 sm:py-24 bg-[#F5F1EA] border-b border-[#DED8CF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="catalogue" className="py-16 sm:py-24 bg-stone-bg border-b border-stone-border">
+      <div className="max-w-[100rem] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#A8875A]/15 text-[#A8875A] text-xs font-bold uppercase tracking-[0.2em]">
-              <Sparkles className="w-3.5 h-3.5" />
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-stone-dark">
+              <span className="w-6 h-px bg-amber-500" />
               <span>Full Showroom Inventory</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#171717]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-stone-dark">
               Explore Natural Stone Slabs
             </h2>
-            <p className="text-sm sm:text-base text-[#817970] max-w-xl font-sans">
+            <p className="text-sm text-stone-taupe max-w-xl font-sans font-light leading-relaxed">
               Filter by category, color tone, or architectural application to inspect mirror-polished granite and imported marble.
             </p>
           </div>
 
           {/* Real-time Search Input */}
           <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-[#817970] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-stone-taupe absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search by name, code, or finish..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#FBF9F5] border border-[#DED8CF] focus:border-[#A8875A] focus:ring-1 focus:ring-[#A8875A] rounded-lg pl-10 pr-4 py-3 text-xs text-[#171717] transition-all outline-none shadow-xs"
+              className="w-full bg-stone-surface border border-stone-border focus:border-stone-accent focus:ring-1 focus:ring-stone-accent rounded-lg pl-10 pr-4 py-3 text-xs text-stone-dark transition-all outline-none shadow-xs"
             />
           </div>
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="p-4 bg-[#FBF9F5] border border-[#DED8CF] rounded-xl space-y-4 shadow-xs">
+        <div className="p-4 bg-stone-surface border border-stone-border rounded-xl space-y-4 shadow-xs">
           
           {/* Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none whitespace-nowrap">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#817970] mr-2 flex-shrink-0 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5 text-[#A8875A]" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-taupe mr-2 flex-shrink-0 flex items-center gap-1.5">
+              <Filter className="w-3.5 h-3.5 text-stone-accent" />
               <span>Category:</span>
             </span>
 
             <button
               onClick={() => onSelectCategoryFilter("all")}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex-shrink-0 cursor-pointer ${
+              className={`px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] rounded-lg transition-all flex-shrink-0 cursor-pointer ${
                 selectedCategoryFilter === "all"
-                  ? "bg-[#171717] text-white shadow-md"
-                  : "bg-[#F5F1EA] text-[#222] hover:bg-[#DED8CF]"
+                  ? "bg-stone-dark text-stone-bg shadow-md"
+                  : "bg-stone-bg text-stone-text hover:bg-stone-border/40"
               }`}
             >
-              All Categories ({PRODUCTS.length})
+              All Slabs ({PRODUCTS.length})
             </button>
 
             {CATEGORIES.map((cat) => {
@@ -134,10 +134,10 @@ export default function ProductCatalogue({
                 <button
                   key={cat.id}
                   onClick={() => onSelectCategoryFilter(cat.id)}
-                  className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex-shrink-0 cursor-pointer ${
+                  className={`px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] rounded-lg transition-all flex-shrink-0 cursor-pointer ${
                     selectedCategoryFilter === cat.id
-                      ? "bg-[#171717] text-white shadow-md"
-                      : "bg-[#F5F1EA] text-[#222] hover:bg-[#DED8CF]"
+                      ? "bg-stone-dark text-stone-bg shadow-md"
+                      : "bg-stone-bg text-stone-text hover:bg-stone-border/40"
                   }`}
                 >
                   {cat.name} ({count})
@@ -147,17 +147,17 @@ export default function ProductCatalogue({
           </div>
 
           {/* Secondary Sub-filters: Color & Application Dropdowns */}
-          <div className="pt-3 border-t border-[#DED8CF]/60 flex flex-wrap items-center justify-between gap-4">
+          <div className="pt-3 border-t border-stone-border/60 flex flex-wrap items-center justify-between gap-4">
             
             <div className="flex flex-wrap items-center gap-4 text-xs">
               
               {/* Application Filter */}
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-[#817970]">Application:</span>
+                <span className="font-semibold text-stone-taupe">Application:</span>
                 <select
                   value={selectedApplicationFilter}
                   onChange={(e) => onSelectApplicationFilter(e.target.value)}
-                  className="bg-[#F5F1EA] border border-[#DED8CF] text-[#171717] font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-[#A8875A]"
+                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
                 >
                   <option value="All">All Applications</option>
                   {APPLICATIONS.map((app) => (
@@ -168,11 +168,11 @@ export default function ProductCatalogue({
 
               {/* Color Tone Filter */}
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-[#817970]">Color Tone:</span>
+                <span className="font-semibold text-stone-taupe">Color Tone:</span>
                 <select
                   value={selectedColor}
                   onChange={(e) => setSelectedColor(e.target.value)}
-                  className="bg-[#F5F1EA] border border-[#DED8CF] text-[#171717] font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-[#A8875A]"
+                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
                 >
                   <option value="All">All Colors</option>
                   {COLOR_TONES.map((color) => (
@@ -183,11 +183,11 @@ export default function ProductCatalogue({
 
               {/* Finish Filter */}
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-[#817970]">Surface Finish:</span>
+                <span className="font-semibold text-stone-taupe">Surface Finish:</span>
                 <select
                   value={selectedFinish}
                   onChange={(e) => setSelectedFinish(e.target.value)}
-                  className="bg-[#F5F1EA] border border-[#DED8CF] text-[#171717] font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-[#A8875A]"
+                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
                 >
                   <option value="All">All Finishes</option>
                   {SURFACES.map((surf) => (
@@ -228,10 +228,10 @@ export default function ProductCatalogue({
                 <div
                   key={product.id}
                   onClick={() => onViewProductDetail(product)}
-                  className="group bg-[#FBF9F5] border border-[#DED8CF] hover:border-[#A8875A] rounded-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer flex flex-col justify-between shimmer-hover relative"
+                  className="group bg-stone-surface border border-stone-border hover:border-stone-accent rounded-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer flex flex-col justify-between shimmer-hover relative"
                 >
                   {/* Top Image Container */}
-                  <div className="relative h-64 overflow-hidden bg-[#171717]">
+                  <div className="relative h-64 overflow-hidden bg-stone-dark">
                     <img
                       src={product.images[0]}
                       alt={product.name}
@@ -239,26 +239,26 @@ export default function ProductCatalogue({
                     />
                     
                     {/* Dark Vignette Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-dark/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
                     {/* Category Tag Badge */}
-                    <span className="absolute top-3 left-3 glass-panel-dark text-[#A8875A] text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded border border-[#A8875A]/40 shadow-xs">
+                    <span className="absolute top-3 left-3 glass-panel-dark text-amber-500 text-[9px] font-semibold uppercase tracking-[0.22em] px-2.5 py-1 rounded border border-amber-500/30 shadow-xs">
                       {product.category}
                     </span>
 
                     {/* Code Pill */}
-                    <span className="absolute top-3 right-3 bg-[#171717]/80 text-[#DED8CF] text-[10px] font-mono px-2 py-0.5 rounded">
+                    <span className="absolute top-3 right-3 bg-stone-dark/80 text-stone-bg/80 text-[10px] font-mono px-2 py-0.5 rounded border border-stone-border/20">
                       {product.code}
                     </span>
 
                     {/* Quick View Floating Overlay Button */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-[#171717]/40 backdrop-blur-[2px]">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-stone-dark/40 backdrop-blur-[2px]">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           onViewProductDetail(product);
                         }}
-                        className="px-4 py-2 bg-[#FBF9F5] text-[#171717] font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl flex items-center gap-1.5 hover:bg-[#A8875A] hover:text-white transition-colors"
+                        className="px-4 py-2 bg-stone-surface text-stone-dark font-bold text-xs uppercase tracking-[0.15em] rounded-lg shadow-xl flex items-center gap-1.5 hover:bg-stone-accent hover:text-white transition-colors"
                       >
                         <Eye className="w-4 h-4" />
                         <span>Inspect Slab Specs</span>
@@ -270,16 +270,16 @@ export default function ProductCatalogue({
                   <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
                     
                     <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs text-[#817970]">
+                      <div className="flex items-center justify-between text-xs text-stone-taupe">
                         <span>{product.finish} Finish</span>
                         <span>{product.thickness}</span>
                       </div>
 
-                      <h3 className="font-serif text-xl font-bold text-[#171717] group-hover:text-[#A8875A] transition-colors line-clamp-1">
+                      <h3 className="font-serif text-xl font-light text-stone-dark group-hover:text-stone-accent transition-colors line-clamp-1">
                         {product.name}
                       </h3>
 
-                      <p className="text-xs text-[#817970] line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-stone-taupe line-clamp-2 leading-relaxed font-light">
                         {product.description}
                       </p>
                     </div>
@@ -287,14 +287,14 @@ export default function ProductCatalogue({
                     {/* Suitable Applications Pills */}
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {product.applications.slice(0, 3).map((app) => (
-                        <span key={app} className="text-[10px] font-medium bg-[#F5F1EA] text-[#222] px-2 py-0.5 rounded border border-[#DED8CF]">
+                        <span key={app} className="text-[9px] uppercase tracking-wider bg-stone-bg text-stone-dark px-2 py-0.5 rounded border border-stone-border">
                           {app}
                         </span>
                       ))}
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="pt-4 border-t border-[#DED8CF]/60">
+                    <div className="pt-4 border-t border-stone-border/65">
                       
                       {/* Prominent Action Buttons */}
                       <div className="grid grid-cols-2 gap-2">
@@ -302,10 +302,10 @@ export default function ProductCatalogue({
                         {/* Prominent Add to Enquiry List Button */}
                         <button
                           onClick={(e) => handleAddToBasketClick(e, product)}
-                          className={`py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs ${
+                          className={`py-2.5 px-3 rounded-lg text-[10px] font-semibold uppercase tracking-[0.15em] flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs ${
                             inBasket
                               ? "bg-emerald-800 text-white border border-emerald-700"
-                              : "bg-[#A8875A] hover:bg-[#8F7148] text-white border border-[#A8875A]"
+                              : "bg-stone-accent hover:bg-stone-accent-dark text-stone-bg border border-stone-accent"
                           }`}
                         >
                           {inBasket ? (
@@ -316,7 +316,7 @@ export default function ProductCatalogue({
                           ) : (
                             <>
                               <ShoppingBag className="w-4 h-4 text-white" />
-                              <span>+ Add to List</span>
+                              <span>+ Add List</span>
                             </>
                           )}
                         </button>
@@ -324,9 +324,9 @@ export default function ProductCatalogue({
                         {/* WhatsApp Price Button */}
                         <button
                           onClick={(e) => handleWhatsAppQuickEnquiry(e, product)}
-                          className="py-2.5 px-3 bg-[#171717] hover:bg-[#333] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
+                          className="py-2.5 px-3 bg-stone-dark hover:bg-stone-accent text-stone-bg hover:text-stone-bg text-[10px] font-semibold uppercase tracking-[0.15em] rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
                         >
-                          <MessageSquare className="w-4 h-4 text-[#A8875A]" />
+                          <MessageSquare className="w-4 h-4 text-stone-accent group-hover:text-stone-bg" />
                           <span>Get Price</span>
                         </button>
 
@@ -341,12 +341,12 @@ export default function ProductCatalogue({
           </div>
         ) : (
           /* Empty Search State */
-          <div className="text-center py-16 bg-[#FBF9F5] border border-[#DED8CF] rounded-xl space-y-4">
-            <Search className="w-12 h-12 text-[#DED8CF] mx-auto" />
-            <h3 className="font-serif text-2xl font-bold text-[#171717]">
+          <div className="text-center py-16 bg-stone-surface border border-stone-border rounded-xl space-y-4">
+            <Search className="w-12 h-12 text-stone-border mx-auto" />
+            <h3 className="font-serif text-2xl font-light text-stone-dark">
               No matching stone slabs found
             </h3>
-            <p className="text-xs text-[#817970]">
+            <p className="text-xs text-stone-taupe">
               Try adjusting your search term or resetting active category filters.
             </p>
             <button
@@ -357,7 +357,7 @@ export default function ProductCatalogue({
                 setSelectedFinish("All");
                 setSearchQuery("");
               }}
-              className="px-6 py-2.5 bg-[#171717] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#A8875A] transition-colors cursor-pointer"
+              className="px-6 py-2.5 bg-stone-dark text-stone-bg text-xs font-semibold uppercase tracking-[0.18em] rounded-lg hover:bg-stone-accent transition-colors cursor-pointer"
             >
               Reset Filters
             </button>

@@ -11,17 +11,17 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#171717]/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-dark/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       
-      <div className="relative bg-[#F5F1EA] border border-[#DED8CF] rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden my-8">
+      <div className="relative bg-stone-bg border border-stone-border rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden my-8">
         
         {/* Header */}
-        <div className="p-6 bg-[#171717] text-white flex items-center justify-between border-b border-[#333]">
+        <div className="p-6 bg-stone-dark text-white flex items-center justify-between border-b border-stone-border/10">
           <div className="flex items-center gap-2.5">
-            <Scale className="w-5 h-5 text-[#A8875A]" />
+            <Scale className="w-5 h-5 text-stone-accent" />
             <div>
               <h2 className="font-serif text-xl font-bold">Compare Stone Slabs</h2>
-              <p className="text-xs text-[#DED8CF]">Side-by-side specification & finish comparison</p>
+              <p className="text-xs text-stone-border">Side-by-side specification & finish comparison</p>
             </div>
           </div>
 
@@ -36,7 +36,7 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
             )}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full hover:bg-[#333] text-white transition-colors cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-stone-border/20 text-white transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -50,18 +50,18 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
               {compareItems.map((product) => (
                 <div
                   key={product.id}
-                  className="bg-[#FBF9F5] border border-[#DED8CF] rounded-xl p-5 space-y-4 flex flex-col justify-between shadow-xs relative"
+                  className="bg-stone-surface border border-stone-border rounded-xl p-5 space-y-4 flex flex-col justify-between shadow-xs relative"
                 >
                   <button
                     onClick={() => onRemoveFromCompare(product.id)}
-                    className="absolute top-3 right-3 p-1.5 bg-[#171717]/80 hover:bg-red-700 text-white rounded-full transition-colors z-10 cursor-pointer"
+                    className="absolute top-3 right-3 p-1.5 bg-stone-dark/80 hover:bg-red-700 text-white rounded-full transition-colors z-10 cursor-pointer"
                     title="Remove from comparison"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
 
                   <div className="space-y-3">
-                    <div className="h-44 rounded-lg overflow-hidden border border-[#DED8CF] bg-[#171717]">
+                    <div className="h-44 rounded-lg overflow-hidden border border-stone-border bg-stone-dark">
                       <img
                         src={product.images[0]}
                         alt={product.name}
@@ -70,42 +70,42 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
                     </div>
 
                     <div>
-                      <span className="text-[10px] font-mono font-semibold uppercase text-[#A8875A]">
+                      <span className="text-[10px] font-mono font-semibold uppercase text-stone-accent">
                         {product.code} • {product.category}
                       </span>
-                      <h3 className="font-serif text-lg font-bold text-[#171717] line-clamp-1">
+                      <h3 className="font-serif text-lg font-bold text-stone-dark line-clamp-1">
                         {product.name}
                       </h3>
                     </div>
 
                     {/* Spec Table */}
-                    <div className="space-y-2 text-xs border-t border-b border-[#DED8CF]/60 py-3">
+                    <div className="space-y-2 text-xs border-t border-b border-stone-border/60 py-3">
                       <div className="flex justify-between">
-                        <span className="text-[#817970] font-medium">Surface Finish:</span>
-                        <span className="font-semibold text-[#171717]">{product.finish}</span>
+                        <span className="text-stone-taupe font-medium">Surface Finish:</span>
+                        <span className="font-semibold text-stone-dark">{product.finish}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#817970] font-medium">Slab Thickness:</span>
-                        <span className="font-semibold text-[#171717]">{product.thickness}</span>
+                        <span className="text-stone-taupe font-medium">Slab Thickness:</span>
+                        <span className="font-semibold text-stone-dark">{product.thickness}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#817970] font-medium">Color Tone:</span>
-                        <span className="font-semibold text-[#171717]">{product.color}</span>
+                        <span className="text-stone-taupe font-medium">Color Tone:</span>
+                        <span className="font-semibold text-stone-dark">{product.color}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#817970] font-medium">Availability:</span>
-                        <span className="font-semibold text-[#171717]">{product.availability}</span>
+                        <span className="text-stone-taupe font-medium">Availability:</span>
+                        <span className="font-semibold text-stone-dark">{product.availability}</span>
                       </div>
                     </div>
 
                     {/* Applications */}
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-[#817970] mb-1">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-stone-taupe mb-1">
                         Recommended Uses
                       </span>
                       <div className="flex flex-wrap gap-1">
                         {product.applications.map((app) => (
-                          <span key={app} className="text-[10px] bg-[#F5F1EA] text-[#171717] px-2 py-0.5 rounded border border-[#DED8CF]">
+                          <span key={app} className="text-[10px] bg-stone-bg text-stone-dark px-2 py-0.5 rounded border border-stone-border">
                             {app}
                           </span>
                         ))}
@@ -117,9 +117,9 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
                   <div className="pt-2">
                     <button
                       onClick={() => handleWhatsAppEnquiry(product)}
-                      className="w-full py-2.5 px-3 bg-[#171717] hover:bg-[#A8875A] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                      className="w-full py-2.5 px-3 bg-stone-dark hover:bg-stone-accent text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                     >
-                      <MessageSquare className="w-3.5 h-3.5 text-[#A8875A]" />
+                      <MessageSquare className="w-3.5 h-3.5 text-stone-accent" />
                       <span>Get Price on WhatsApp</span>
                     </button>
                   </div>
@@ -129,9 +129,9 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
 
               {/* Placeholder Card if less than 3 items */}
               {compareItems.length < 3 && (
-                <div className="border-2 border-dashed border-[#DED8CF] rounded-xl p-8 flex flex-col items-center justify-center text-center space-y-3 min-h-[350px]">
-                  <Scale className="w-10 h-10 text-[#DED8CF]" />
-                  <p className="text-xs text-[#817970] font-medium">
+                <div className="border-2 border-dashed border-stone-border rounded-xl p-8 flex flex-col items-center justify-center text-center space-y-3 min-h-[350px]">
+                  <Scale className="w-10 h-10 text-stone-border" />
+                  <p className="text-xs text-stone-taupe font-medium">
                     Add another stone slab to compare specifications side-by-side.
                   </p>
                 </div>
@@ -139,11 +139,11 @@ export default function CompareModal({ isOpen, onClose, compareItems = [], onRem
             </div>
           ) : (
             <div className="text-center py-12 space-y-4">
-              <Scale className="w-12 h-12 text-[#DED8CF] mx-auto" />
-              <h3 className="font-serif text-xl font-bold text-[#171717]">
+              <Scale className="w-12 h-12 text-stone-border mx-auto" />
+              <h3 className="font-serif text-xl font-bold text-stone-dark">
                 No stone slabs selected for comparison
               </h3>
-              <p className="text-xs text-[#817970]">
+              <p className="text-xs text-stone-taupe">
                 Click the <strong>Compare</strong> icon on any product card in the catalogue to compare slabs.
               </p>
             </div>

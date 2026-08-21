@@ -33,25 +33,25 @@ export default function EnquiryBasketDrawer({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-[#171717]/80 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-stone-dark/80 backdrop-blur-sm animate-fadeIn">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
         
         {/* Drawer Panel */}
-        <div className="w-screen max-w-md bg-[#F5F1EA] border-l border-[#DED8CF] shadow-2xl flex flex-col justify-between">
+        <div className="w-screen max-w-md bg-stone-bg border-l border-stone-border shadow-2xl flex flex-col justify-between">
           
           {/* Header */}
-          <div className="p-6 bg-[#171717] text-white flex items-center justify-between border-b border-[#333]">
+          <div className="p-6 bg-stone-dark text-white flex items-center justify-between border-b border-stone-border/10">
             <div className="flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-[#A8875A]" />
+              <ShoppingBag className="w-5 h-5 text-stone-accent" />
               <h2 className="font-serif text-xl font-bold">Enquiry Basket</h2>
-              <span className="text-xs bg-[#A8875A] text-white px-2 py-0.5 rounded-full font-sans font-semibold">
+              <span className="text-xs bg-stone-accent text-white px-2 py-0.5 rounded-full font-sans font-semibold">
                 {items.length} items
               </span>
             </div>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full hover:bg-[#333] text-white transition-colors cursor-pointer"
+              className="p-1.5 rounded-full hover:bg-stone-border/20 text-white transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -61,8 +61,8 @@ export default function EnquiryBasketDrawer({
           <div className="p-6 overflow-y-auto flex-1 space-y-6">
             
             {/* Disclaimer Banner */}
-            <div className="p-3 bg-[#FBF9F5] border border-[#DED8CF] rounded text-xs text-[#817970] flex items-start gap-2">
-              <ShieldAlert className="w-4 h-4 text-[#A8875A] flex-shrink-0 mt-0.5" />
+            <div className="p-3 bg-stone-surface border border-stone-border rounded text-xs text-stone-taupe flex items-start gap-2">
+              <ShieldAlert className="w-4 h-4 text-stone-accent flex-shrink-0 mt-0.5" />
               <p>
                 Add stones to your enquiry list and click <strong>Send Enquiry on WhatsApp</strong> to discuss stock, slab sizes, and current pricing with our team.
               </p>
@@ -71,7 +71,7 @@ export default function EnquiryBasketDrawer({
             {/* Selected Items List */}
             {items.length > 0 ? (
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs font-semibold text-[#817970] uppercase">
+                <div className="flex items-center justify-between text-xs font-semibold text-stone-taupe uppercase">
                   <span>Selected Stones</span>
                   <button
                     onClick={onClearBasket}
@@ -84,29 +84,29 @@ export default function EnquiryBasketDrawer({
                 {items.map((item) => (
                   <div
                     key={item.product.id}
-                    className="p-3 bg-[#FBF9F5] border border-[#DED8CF] rounded flex items-center gap-3 relative"
+                    className="p-3 bg-stone-surface border border-stone-border rounded flex items-center gap-3 relative"
                   >
                     <img
                       src={item.product.images[0]}
                       alt={item.product.name}
-                      className="w-16 h-16 object-cover rounded border border-[#DED8CF]"
+                      className="w-16 h-16 object-cover rounded border border-stone-border"
                     />
 
                     <div className="flex-1 space-y-1">
-                      <h4 className="font-serif text-sm font-bold text-[#171717] line-clamp-1">
+                      <h4 className="font-serif text-sm font-bold text-stone-dark line-clamp-1">
                         {item.product.name}
                       </h4>
-                      <p className="text-[11px] text-[#817970]">
+                      <p className="text-[11px] text-stone-taupe">
                         {item.product.finish} • {item.product.category}
                       </p>
 
                       {/* Quantity Controls */}
                       <div className="flex items-center gap-2 pt-1">
-                        <span className="text-[11px] font-semibold text-[#171717]">Sq.Ft:</span>
-                        <div className="flex items-center border border-[#DED8CF] rounded bg-[#F5F1EA]">
+                        <span className="text-[11px] font-semibold text-stone-dark">Sq.Ft:</span>
+                        <div className="flex items-center border border-stone-border rounded bg-stone-bg">
                           <button
                             onClick={() => onUpdateQuantity(item.product.id, Math.max(10, (parseInt(item.quantity, 10) || 40) - 10))}
-                            className="px-1.5 py-0.5 text-xs text-[#171717] hover:bg-[#DED8CF]"
+                            className="px-1.5 py-0.5 text-xs text-stone-dark hover:bg-stone-border/40"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
@@ -114,11 +114,11 @@ export default function EnquiryBasketDrawer({
                             type="number"
                             value={item.quantity}
                             onChange={(e) => onUpdateQuantity(item.product.id, e.target.value)}
-                            className="w-14 text-center text-xs font-semibold bg-transparent focus:outline-none text-[#171717]"
+                            className="w-14 text-center text-xs font-semibold bg-transparent focus:outline-none text-stone-dark"
                           />
                           <button
                             onClick={() => onUpdateQuantity(item.product.id, (parseInt(item.quantity, 10) || 40) + 10)}
-                            className="px-1.5 py-0.5 text-xs text-[#171717] hover:bg-[#DED8CF]"
+                            className="px-1.5 py-0.5 text-xs text-stone-dark hover:bg-stone-border/40"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -129,7 +129,7 @@ export default function EnquiryBasketDrawer({
                     {/* Delete Item Button */}
                     <button
                       onClick={() => onRemoveItem(item.product.id)}
-                      className="p-1 text-[#817970] hover:text-red-700 transition-colors"
+                      className="p-1 text-stone-taupe hover:text-red-700 transition-colors"
                       title="Remove stone"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -140,11 +140,11 @@ export default function EnquiryBasketDrawer({
             ) : (
               /* Empty Basket View */
               <div className="text-center py-12 space-y-4">
-                <ShoppingBag className="w-12 h-12 text-[#DED8CF] mx-auto" />
-                <h3 className="font-serif text-xl font-bold text-[#171717]">
+                <ShoppingBag className="w-12 h-12 text-stone-border mx-auto" />
+                <h3 className="font-serif text-xl font-bold text-stone-dark">
                   Your enquiry list is empty.
                 </h3>
-                <p className="text-xs text-[#817970]">
+                <p className="text-xs text-stone-taupe">
                   Explore our granite and marble catalogue to add items to your custom enquiry.
                 </p>
                 <button
@@ -152,7 +152,7 @@ export default function EnquiryBasketDrawer({
                     onClose();
                     onExploreCollection();
                   }}
-                  className="px-5 py-2.5 bg-[#171717] text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-[#A8875A] transition-colors cursor-pointer"
+                  className="px-5 py-2.5 bg-stone-dark text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-stone-accent transition-colors cursor-pointer"
                 >
                   Explore Collection
                 </button>
@@ -161,8 +161,8 @@ export default function EnquiryBasketDrawer({
 
             {/* Customer Information Form (Only if items exist) */}
             {items.length > 0 && (
-              <form onSubmit={handleSendWhatsAppEnquiry} className="space-y-3 pt-4 border-t border-[#DED8CF]">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#171717]">
+              <form onSubmit={handleSendWhatsAppEnquiry} className="space-y-3 pt-4 border-t border-stone-border">
+                <p className="text-xs font-bold uppercase tracking-wider text-stone-dark">
                   Your Contact Details (Optional)
                 </p>
 
@@ -172,7 +172,7 @@ export default function EnquiryBasketDrawer({
                     placeholder="Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded px-3 py-2 text-xs text-[#171717] focus:outline-none focus:border-[#A8875A]"
+                    className="w-full bg-stone-surface border border-stone-border rounded px-3 py-2 text-xs text-stone-dark focus:outline-none focus:border-stone-accent"
                   />
                 </div>
 
@@ -182,7 +182,7 @@ export default function EnquiryBasketDrawer({
                     placeholder="Phone Number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded px-3 py-2 text-xs text-[#171717] focus:outline-none focus:border-[#A8875A]"
+                    className="w-full bg-stone-surface border border-stone-border rounded px-3 py-2 text-xs text-stone-dark focus:outline-none focus:border-stone-accent"
                   />
                 </div>
 
@@ -192,7 +192,7 @@ export default function EnquiryBasketDrawer({
                     placeholder="Location / City (e.g. Mukkam, Kozhikode)"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded px-3 py-2 text-xs text-[#171717] focus:outline-none focus:border-[#A8875A]"
+                    className="w-full bg-stone-surface border border-stone-border rounded px-3 py-2 text-xs text-stone-dark focus:outline-none focus:border-stone-accent"
                   />
                 </div>
 
@@ -202,15 +202,15 @@ export default function EnquiryBasketDrawer({
                     placeholder="Additional message or questions..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-[#FBF9F5] border border-[#DED8CF] rounded px-3 py-2 text-xs text-[#171717] focus:outline-none focus:border-[#A8875A]"
+                    className="w-full bg-stone-surface border border-stone-border rounded px-3 py-2 text-xs text-stone-dark focus:outline-none focus:border-stone-accent"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 bg-[#171717] hover:bg-[#A8875A] text-white font-bold text-xs uppercase tracking-widest rounded flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md"
+                  className="w-full py-3 px-4 bg-stone-dark hover:bg-stone-accent text-white font-bold text-xs uppercase tracking-widest rounded flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#A8875A]" />
+                  <MessageSquare className="w-4 h-4 text-stone-accent" />
                   <span>Send Enquiry on WhatsApp</span>
                 </button>
               </form>
@@ -219,7 +219,7 @@ export default function EnquiryBasketDrawer({
           </div>
 
           {/* Footer */}
-          <div className="p-4 bg-[#FBF9F5] border-t border-[#DED8CF] text-[11px] text-[#817970] text-center">
+          <div className="p-4 bg-stone-surface border-t border-stone-border text-[11px] text-stone-taupe text-center">
             Galaxy Granite & Marble • Mukkam, Kerala
           </div>
 

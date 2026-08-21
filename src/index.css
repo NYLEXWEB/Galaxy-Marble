@@ -2,17 +2,17 @@
 
 @theme {
   --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
 
-  --color-stone-bg: #F5F1EA;
-  --color-stone-dark: #171717;
-  --color-stone-taupe: #817970;
-  --color-stone-accent: #A8875A;
-  --color-stone-accent-dark: #8F7148;
-  --color-stone-accent-light: #F3ECE2;
-  --color-stone-surface: #FBF9F5;
-  --color-stone-border: #DED8CF;
-  --color-stone-text: #222222;
+  --color-stone-bg: #FAFAFA;
+  --color-stone-dark: #111111;
+  --color-stone-taupe: #6B7280;
+  --color-stone-accent: #111111;
+  --color-stone-accent-dark: #000000;
+  --color-stone-accent-light: #F3F4F6;
+  --color-stone-surface: #FFFFFF;
+  --color-stone-border: #E5E7EB;
+  --color-stone-text: #111111;
 }
 
 @layer base {
@@ -38,21 +38,21 @@ html {
 
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F1EA;
+  background: #F3F4F6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #DED8CF;
+  background: #D1D5DB;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8875A;
+  background: #111111;
 }
 
 /* Luxury Glassmorphism & Shimmer Sweep Effects */

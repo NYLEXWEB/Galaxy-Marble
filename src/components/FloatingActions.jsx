@@ -41,7 +41,7 @@ export default function FloatingActions() {
       {/* 1. Scroll To Top Arrow Button (Top) - White Circle Background */}
       <button
         onClick={scrollToTop}
-        className={`p-3 rounded-full bg-white hover:bg-[#171717] text-[#171717] hover:text-white border border-[#DED8CF] shadow-lg shadow-black/10 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center group ${
+        className={`p-3 rounded-full bg-white hover:bg-stone-dark text-stone-dark hover:text-white border border-stone-border shadow-lg shadow-black/10 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center group ${
           showScrollTop
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-4 scale-90 pointer-events-none"
@@ -57,7 +57,7 @@ export default function FloatingActions() {
         href={BUSINESS_CONFIG.location.googleMapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 rounded-full bg-white hover:bg-gray-100 border border-[#DED8CF] shadow-lg shadow-black/10 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center group"
+        className="p-3 rounded-full bg-white hover:bg-gray-100 border border-stone-border shadow-lg shadow-black/10 transition-all duration-300 transform hover:scale-110 cursor-pointer flex items-center justify-center group"
         title="View Google Business Profile & Customer Reviews"
         aria-label="Google Business Profile"
       >
