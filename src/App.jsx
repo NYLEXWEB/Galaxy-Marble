@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Scale, ShoppingBag, X, MessageSquare } from "lucide-react";
+import { ShoppingBag, X, MessageSquare } from "lucide-react";
 import Navbar from "./components/Navbar";
-import MobileStickyBar from "./components/MobileStickyBar";
 import Hero from "./components/Hero";
 import TrustBar from "./components/TrustBar";
 import CollectionDiscovery from "./components/CollectionDiscovery";
 import ProductCatalogue from "./components/ProductCatalogue";
 import ProductDetailModal from "./components/ProductDetailModal";
 import EnquiryBasketDrawer from "./components/EnquiryBasketDrawer";
-import CalculatorModal from "./components/CalculatorModal";
 import QuoteRequestModal from "./components/QuoteRequestModal";
 import SiteVisitModal from "./components/SiteVisitModal";
-import CompareModal from "./components/CompareModal";
 import Toast from "./components/Toast";
+import FloatingActions from "./components/FloatingActions";
 import ProjectShowcase from "./components/ProjectShowcase";
 import ReviewSection from "./components/ReviewSection";
 import ShowroomLocationSection from "./components/ShowroomLocationSection";
@@ -37,10 +35,6 @@ export default function App() {
     }
   }, [basketItems]);
 
-  // Stone Comparison State
-  const [compareItems, setCompareItems] = useState([]);
-  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
-
   // Toast Notification State
   const [toast, setToast] = useState(null); // { message: string, type: 'basket' | 'compare' }
 
@@ -51,7 +45,6 @@ export default function App() {
   // Modal & Drawer Open States
   const [activeProductDetail, setActiveProductDetail] = useState(null);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
 
@@ -93,31 +86,6 @@ export default function App() {
     setBasketItems([]);
   };
 
-  // Compare Actions
-  const handleToggleCompare = (product) => {
-    setCompareItems((prev) => {
-      const exists = prev.some(i => i.id === product.id);
-      if (exists) {
-        setToast({ message: `${product.name} removed from comparison`, type: "compare" });
-        return prev.filter(i => i.id !== product.id);
-      }
-      if (prev.length >= 3) {
-        setToast({ message: "You can compare up to 3 stone slabs at a time", type: "compare" });
-        return prev;
-      }
-      setToast({ message: `${product.name} added to comparison`, type: "compare" });
-      return [...prev, product];
-    });
-  };
-
-  const handleRemoveFromCompare = (productId) => {
-    setCompareItems((prev) => prev.filter(i => i.id !== productId));
-  };
-
-  const handleClearCompare = () => {
-    setCompareItems([]);
-  };
-
   // Category & Application Filter Click Actions from Discovery Cards
   const handleCategorySelectFromDiscovery = (categoryId) => {
     setSelectedCategoryFilter(categoryId);
@@ -143,7 +111,6 @@ export default function App() {
         <Navbar
           basketCount={basketItems.length}
           onOpenBasket={() => setIsBasketOpen(true)}
-          onOpenCalculator={() => setIsCalculatorOpen(true)}
           onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
         />
 
@@ -152,7 +119,6 @@ export default function App() {
           {/* Hero Section */}
           <Hero
             onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-            onOpenCalculator={() => setIsCalculatorOpen(true)}
           />
 
           {/* Verified Google Trust Bar */}
@@ -173,8 +139,6 @@ export default function App() {
             onViewProductDetail={(prod) => setActiveProductDetail(prod)}
             onAddToBasket={handleAddToBasket}
             basketItems={basketItems}
-            compareItems={compareItems}
-            onToggleCompare={handleToggleCompare}
           />
 
           {/* Project Showcase Gallery */}
@@ -190,33 +154,6 @@ export default function App() {
         </main>
       </div>
 
-      {/* Floating Compare Bar Pill */}
-      {compareItems.length > 0 && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 sm:bottom-6 z-40 animate-fadeIn">
-          <div className="bg-[#171717] text-white px-5 py-3 rounded-full shadow-2xl border border-[#A8875A] flex items-center gap-4 glass-panel-dark">
-            <div className="flex items-center gap-2 text-xs font-semibold">
-              <Scale className="w-4 h-4 text-[#A8875A]" />
-              <span>{compareItems.length} Stone Slabs Selected</span>
-            </div>
-
-            <button
-              onClick={() => setIsCompareModalOpen(true)}
-              className="px-4 py-1.5 bg-[#A8875A] hover:bg-[#8F7148] text-white text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer"
-            >
-              Compare Slabs
-            </button>
-
-            <button
-              onClick={handleClearCompare}
-              className="p-1 text-[#817970] hover:text-white rounded-full transition-colors cursor-pointer"
-              title="Clear selection"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Toast Feedback Notification */}
       {toast && (
         <Toast
@@ -229,12 +166,6 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-        onOpenCalculator={() => setIsCalculatorOpen(true)}
-      />
-
-      {/* Mobile Sticky Action Bar */}
-      <MobileStickyBar
-        onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
       />
 
       {/* Product Detail Modal */}
@@ -243,19 +174,9 @@ export default function App() {
           product={activeProductDetail}
           onClose={() => setActiveProductDetail(null)}
           onAddToBasket={handleAddToBasket}
-          onOpenCalculator={() => setIsCalculatorOpen(true)}
           isInBasket={basketItems.some(i => i.product.id === activeProductDetail.id)}
         />
       )}
-
-      {/* Side-by-Side Stone Compare Modal */}
-      <CompareModal
-        isOpen={isCompareModalOpen}
-        onClose={() => setIsCompareModalOpen(false)}
-        compareItems={compareItems}
-        onRemoveFromCompare={handleRemoveFromCompare}
-        onClearCompare={handleClearCompare}
-      />
 
       {/* Enquiry Basket Drawer */}
       <EnquiryBasketDrawer
@@ -271,12 +192,6 @@ export default function App() {
         }}
       />
 
-      {/* Requirement Area Calculator Modal */}
-      <CalculatorModal
-        isOpen={isCalculatorOpen}
-        onClose={() => setIsCalculatorOpen(false)}
-      />
-
       {/* Quote Request Modal */}
       <QuoteRequestModal
         isOpen={isQuoteModalOpen}
@@ -288,6 +203,9 @@ export default function App() {
         isOpen={isSiteVisitModalOpen}
         onClose={() => setIsSiteVisitModalOpen(false)}
       />
+
+      {/* Floating Action Buttons Widget */}
+      <FloatingActions />
 
     </div>
   );

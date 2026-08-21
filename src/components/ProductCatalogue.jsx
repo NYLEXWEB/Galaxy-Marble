@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Search, Filter, MessageSquare, ShoppingBag, Eye, Sparkles, Check, ChevronRight, Scale } from "lucide-react";
+import { Search, Filter, MessageSquare, ShoppingBag, Eye, Sparkles, Check, ChevronRight } from "lucide-react";
 import { PRODUCTS, CATEGORIES, APPLICATIONS, COLOR_TONES, SURFACES } from "../data/products";
 import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
@@ -10,9 +10,7 @@ export default function ProductCatalogue({
   onSelectApplicationFilter,
   onViewProductDetail,
   onAddToBasket,
-  basketItems = [],
-  compareItems = [],
-  onToggleCompare
+  basketItems = []
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedColor, setSelectedColor] = useState("All");
@@ -225,7 +223,6 @@ export default function ProductCatalogue({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredProducts.map((product) => {
               const inBasket = basketItems.some(i => i.product.id === product.id);
-              const isCompared = compareItems.some(i => i.id === product.id);
 
               return (
                 <div
@@ -297,34 +294,10 @@ export default function ProductCatalogue({
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="pt-4 border-t border-[#DED8CF]/60 space-y-2.5">
+                    <div className="pt-4 border-t border-[#DED8CF]/60">
                       
-                      <div className="flex items-center justify-between text-xs">
-                        <div>
-                          <span className="block text-[10px] uppercase font-bold text-[#A8875A]">Price Status</span>
-                          <span className="font-bold text-[#171717]">{product.priceStatus}</span>
-                        </div>
-
-                        {/* Compare Button */}
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (onToggleCompare) onToggleCompare(product);
-                          }}
-                          className={`px-2.5 py-1.5 rounded-md border text-[11px] font-semibold flex items-center gap-1 transition-all cursor-pointer ${
-                            isCompared
-                              ? "bg-[#171717] text-[#A8875A] border-[#A8875A]"
-                              : "bg-[#F5F1EA] text-[#817970] border-[#DED8CF] hover:border-[#A8875A] hover:text-[#171717]"
-                          }`}
-                          title={isCompared ? "In Compare List" : "Compare Stone Specs"}
-                        >
-                          <Scale className="w-3.5 h-3.5" />
-                          <span>{isCompared ? "Compared" : "Compare"}</span>
-                        </button>
-                      </div>
-
                       {/* Prominent Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2 pt-0.5">
+                      <div className="grid grid-cols-2 gap-2">
                         
                         {/* Prominent Add to Enquiry List Button */}
                         <button

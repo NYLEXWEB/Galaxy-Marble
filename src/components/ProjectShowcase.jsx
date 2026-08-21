@@ -28,7 +28,6 @@ export default function ProjectShowcase() {
             </p>
           </div>
 
-          {/* Category Filter Chips */}
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button

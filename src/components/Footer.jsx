@@ -3,7 +3,7 @@ import { MapPin, Phone, MessageSquare, ShieldCheck, ArrowUp } from "lucide-react
 import { BUSINESS_CONFIG } from "../config/business";
 import { buildQuoteRequestWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
-export default function Footer({ onOpenQuoteModal, onOpenCalculator }) {
+export default function Footer({ onOpenQuoteModal }) {
   const handleWhatsAppFooter = () => {
     const msg = buildQuoteRequestWhatsAppMessage({
       name: "Footer Visitor",
@@ -66,11 +66,6 @@ export default function Footer({ onOpenQuoteModal, onOpenCalculator }) {
               Showroom Tools
             </h4>
             <ul className="space-y-2 text-xs text-[#DED8CF]">
-              <li>
-                <button onClick={onOpenCalculator} className="hover:text-white transition-colors cursor-pointer">
-                  Requirement Calculator
-                </button>
-              </li>
               <li>
                 <button onClick={onOpenQuoteModal} className="hover:text-white transition-colors cursor-pointer">
                   Request a Quote

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { X, MessageSquare, Plus, Check, ShieldCheck, ArrowRight, Calculator } from "lucide-react";
+import { X, MessageSquare, Plus, Check, ShieldCheck, ArrowRight } from "lucide-react";
 import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
 export default function ProductDetailModal({
   product,
   onClose,
   onAddToBasket,
-  onOpenCalculator,
   isInBasket
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -93,17 +92,6 @@ export default function ProductDetailModal({
               {product.name}
             </h2>
 
-            {/* Price Banner */}
-            <div className="p-3 bg-[#FBF9F5] border border-[#DED8CF] rounded flex items-center justify-between">
-              <div>
-                <span className="block text-[10px] uppercase font-bold text-[#817970]">Pricing Status</span>
-                <span className="text-sm font-bold text-[#A8875A]">{product.price}</span>
-              </div>
-              <span className="text-xs text-[#817970] italic">
-                {product.availability || "Direct Showroom Slabs"}
-              </span>
-            </div>
-
             {/* Spec Sheet Table */}
             <div className="space-y-2 text-xs border-t border-b border-[#DED8CF] py-3 text-[#222]">
               <div className="flex justify-between py-1 border-b border-[#DED8CF]/40">
@@ -125,20 +113,9 @@ export default function ProductDetailModal({
               {product.description}
             </p>
 
-            {/* Area Quantity Calculator Helper Input */}
+            {/* Estimated Quantity Input */}
             <div className="space-y-2 pt-2">
-              <div className="flex items-center justify-between text-xs">
-                <label className="font-semibold text-[#171717]">Estimated Area Needed (sq.ft):</label>
-                <button
-                  onClick={() => {
-                    onClose();
-                    onOpenCalculator();
-                  }}
-                  className="text-xs text-[#A8875A] hover:underline flex items-center gap-1 cursor-pointer"
-                >
-                  <Calculator className="w-3.5 h-3.5" /> Area Calculator
-                </button>
-              </div>
+              <label className="block text-xs font-semibold text-[#171717]">Estimated Area Needed (sq.ft):</label>
               <input
                 type="number"
                 value={quantity}

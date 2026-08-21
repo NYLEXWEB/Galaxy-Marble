@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Menu, X, ShoppingBag, MessageSquare, Calculator } from "lucide-react";
+import { Menu, X, ShoppingBag, MessageSquare } from "lucide-react";
 import { BUSINESS_CONFIG } from "../config/business";
 
 export default function Navbar({
   basketCount = 0,
   onOpenBasket,
-  onOpenCalculator,
   onOpenQuoteModal
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,16 +49,6 @@ export default function Navbar({
           {/* Action CTAs */}
           <div className="flex items-center space-x-3 sm:space-x-4">
             
-            {/* Area Calculator Quick Button */}
-            <button
-              onClick={onOpenCalculator}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-[#171717] bg-[#FBF9F5] border border-[#DED8CF] rounded hover:border-[#A8875A] transition-all cursor-pointer"
-              title="Area Calculator"
-            >
-              <Calculator className="w-4 h-4 text-[#A8875A]" />
-              <span>Calculator</span>
-            </button>
-
             {/* Enquiry Basket Trigger */}
             <button
               onClick={onOpenBasket}
@@ -112,17 +101,6 @@ export default function Navbar({
             </nav>
 
             <div className="pt-2 flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCalculator();
-                }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium bg-[#FBF9F5] border border-[#DED8CF] text-[#171717] rounded"
-              >
-                <Calculator className="w-4 h-4 text-[#A8875A]" />
-                <span>Requirement Calculator</span>
-              </button>
-
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
