@@ -21,17 +21,24 @@ export const openWhatsApp = (message) => {
 };
 
 /**
- * Build Single Product WhatsApp Message
+ * Build Single Product WhatsApp Message with Slab Image Link
  */
 export const buildSingleProductWhatsAppMessage = ({ product, quantity = "", userNote = "" }) => {
-    let msg = `Hello Galaxy Granite & Marble,\n\nI am interested in the following product:\n\nProduct: ${product.name} (${product.code || product.category})\nFinish: ${product.finish || "Polished"}\nThickness: ${product.thickness || "Standard"}`;
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    const imageUrl = product.images?.[0] ? `${origin}${product.images[0]}` : "";
+
+    let msg = `Hello Galaxy Granite & Marble,\n\nI am interested in the following granite slab:\n\n*Product:* ${product.name}\n*Category:* ${product.category}\n*Finish:* ${product.finish || "Mirror Polished"}`;
+
+    if (imageUrl) {
+        msg += `\n*Slab Photo:* ${imageUrl}`;
+    }
 
     if (quantity) {
-        msg += `\nQuantity / Area: ${quantity} sq.ft`;
+        msg += `\n*Quantity / Area:* ${quantity} sq.ft`;
     }
 
     if (userNote) {
-        msg += `\nNote: ${userNote}`;
+        msg += `\n*Note:* ${userNote}`;
     }
 
     msg += `\n\nPlease share the current price and availability.\n\nThank you.`;
@@ -39,13 +46,19 @@ export const buildSingleProductWhatsAppMessage = ({ product, quantity = "", user
 };
 
 /**
- * Build Multi-Product Enquiry Basket WhatsApp Message
+ * Build Multi-Product Enquiry Basket WhatsApp Message with Slab Image Links
  */
 export const buildBasketWhatsAppMessage = (items, customerDetails = {}) => {
-    let msg = `Hello Galaxy Granite & Marble,\n\nI would like to enquire about the following products:\n\n`;
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    let msg = `Hello Galaxy Granite & Marble,\n\nI would like to enquire about the following granite slabs:\n\n`;
 
     items.forEach((item, index) => {
-        msg += `${index + 1}. ${item.product.name}\n   Finish: ${item.product.finish || "Standard"}\n   Quantity: ${item.quantity || "1"} ${item.unit || "sq.ft"}\n\n`;
+        const imageUrl = item.product.images?.[0] ? `${origin}${item.product.images[0]}` : "";
+        msg += `${index + 1}. *${item.product.name}*\n   Quantity: ${item.quantity || "40"} ${item.unit || "sq.ft"}`;
+        if (imageUrl) {
+            msg += `\n   Slab Photo: ${imageUrl}`;
+        }
+        msg += `\n\n`;
     });
 
     if (customerDetails.name) {
@@ -61,7 +74,7 @@ export const buildBasketWhatsAppMessage = (items, customerDetails = {}) => {
         msg += `Additional Note: ${customerDetails.message}\n`;
     }
 
-    msg += `\nPlease share the current price, availability and quotation.\n\nThank you.`;
+    msg += `\nPlease share the current rate list, availability and quotation.\n\nThank you.`;
     return msg;
 };
 
@@ -69,20 +82,25 @@ export const buildBasketWhatsAppMessage = (items, customerDetails = {}) => {
  * Build Calculator Requirement WhatsApp Message
  */
 export const buildCalculatorWhatsAppMessage = ({ requirementType, length, width, area, selectedProduct = null, userNotes = "" }) => {
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
     let msg = `Hello Galaxy Granite & Marble,\n\nI calculated the following stone requirement on your digital showroom:\n\n`;
     msg += `Requirement Type: ${requirementType}\n`;
     msg += `Dimensions: ${length} ft x ${width} ft\n`;
     msg += `Calculated Area: ${area} sq.ft\n`;
 
     if (selectedProduct) {
-        msg += `Preferred Stone: ${selectedProduct.name} (${selectedProduct.category})\n`;
+        const imageUrl = selectedProduct.images?.[0] ? `${origin}${selectedProduct.images[0]}` : "";
+        msg += `Preferred Stone: ${selectedProduct.name}\n`;
+        if (imageUrl) {
+            msg += `Slab Photo: ${imageUrl}\n`;
+        }
     }
 
     if (userNotes) {
         msg += `Notes: ${userNotes}\n`;
     }
 
-    msg += `\nPlease share an estimated price quotation and availability.\n(Note: Approximate calculation only to be confirmed before order).\n\nThank you.`;
+    msg += `\nPlease share an estimated price quotation and availability.\n\nThank you.`;
     return msg;
 };
 

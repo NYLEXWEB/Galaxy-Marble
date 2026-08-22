@@ -14,7 +14,7 @@ export default function ProjectShowcase() {
   const GalleryCard = ({ item }) => (
     <div
       onClick={() => setActivePreviewImage(item)}
-      className="group relative w-72 sm:w-80 h-56 sm:h-64 rounded-2xl overflow-hidden border border-stone-border hover:border-amber-500/80 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer bg-stone-dark flex-shrink-0 mx-3"
+      className="group relative w-72 sm:w-80 h-56 sm:h-64 rounded-none overflow-hidden border border-stone-border hover:border-amber-500/80 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer bg-stone-dark flex-shrink-0 mx-3"
     >
       {/* Image */}
       <img
@@ -24,22 +24,12 @@ export default function ProjectShowcase() {
         loading="lazy"
       />
 
-      {/* Dark Vignette Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-stone-dark/90 via-stone-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+      {/* Subtle Vignette Overlay on Hover */}
+      <div className="absolute inset-0 bg-stone-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Zoom Hover Icon */}
       <div className="absolute top-3 right-3 p-2 rounded-full bg-stone-dark/80 text-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 border border-amber-500/30">
         <ZoomIn className="w-4 h-4" />
-      </div>
-
-      {/* Bottom Caption */}
-      <div className="absolute inset-x-0 bottom-0 p-4 space-y-0.5 text-white">
-        <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-amber-500 block">
-          {item.stoneName}
-        </span>
-        <h3 className="font-serif text-base font-bold text-white leading-snug line-clamp-1">
-          {item.title}
-        </h3>
       </div>
     </div>
   );

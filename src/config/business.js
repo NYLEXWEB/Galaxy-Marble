@@ -23,9 +23,8 @@ export const BUSINESS_CONFIG = {
     },
     contact: {
         // Primary WhatsApp contact number (international format without + or spaces for API links)
-        // Replace with exact client phone number when provided
-        whatsappNumber: "919447420000",
-        phoneDisplay: "+91 94474 20000",
+        whatsappNumber: "918592071066",
+        phoneDisplay: "+91 85920 71066",
         emailDisplay: null, // Keep null if email is not provided to avoid inventing fake data
     },
     trustPoints: [
