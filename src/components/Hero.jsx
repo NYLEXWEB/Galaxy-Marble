@@ -49,7 +49,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-sm sm:text-base text-stone-bg/85 max-w-xl leading-relaxed font-sans font-light">
-              Discover premium black galaxy granite, imported Italian white marble slabs, kitchen countertops, and precision staircases directly from our Mukkam showroom.
+              Discover Black Markino, Khammam Black, Honey Blue, Leather Black, and Steel Grey granite slabs directly from our Mukkam showroom.
             </p>
 
             {/* Action Buttons */}

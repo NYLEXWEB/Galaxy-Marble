@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X, MessageSquare, Plus, Check, ShieldCheck, ArrowRight } from "lucide-react";
+import { X, MessageSquare, Plus, Check } from "lucide-react";
 import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
 export default function ProductDetailModal({
@@ -72,7 +72,7 @@ export default function ProductDetailModal({
 
         </div>
 
-        {/* Right Column: Product Specs & CTAs (50%) */}
+        {/* Right Column: Product Info & CTAs (50%) */}
         <div className="w-full md:w-1/2 p-6 sm:p-8 overflow-y-auto space-y-6 flex flex-col justify-between">
           
           <div className="space-y-4">
@@ -82,9 +82,7 @@ export default function ProductDetailModal({
               <span className="uppercase tracking-widest font-bold text-stone-accent">
                 {product.category} {product.subCategory ? `• ${product.subCategory}` : ""}
               </span>
-              <span className="font-semibold bg-stone-surface px-2 py-0.5 rounded border border-stone-border">
-                Code: {product.code || "GGM-SLAB"}
-              </span>
+             
             </div>
 
             {/* Title */}
@@ -92,24 +90,8 @@ export default function ProductDetailModal({
               {product.name}
             </h2>
 
-            {/* Spec Sheet Table */}
-            <div className="space-y-2 text-xs border-t border-b border-stone-border py-3 text-stone-text">
-              <div className="flex justify-between py-1 border-b border-stone-border/40">
-                <span className="text-stone-taupe">Surface Finish:</span>
-                <span className="font-semibold">{product.finish}</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-stone-border/40">
-                <span className="text-stone-taupe">Slab Thickness:</span>
-                <span className="font-semibold">{product.thickness}</span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span className="text-stone-taupe">Suitable Applications:</span>
-                <span className="font-semibold">{product.applications.join(", ")}</span>
-              </div>
-            </div>
-
             {/* Description */}
-            <p className="text-xs text-stone-taupe leading-relaxed">
+            <p className="text-xs text-stone-taupe leading-relaxed pt-2 border-t border-stone-border">
               {product.description}
             </p>
 

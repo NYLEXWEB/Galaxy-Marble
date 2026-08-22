@@ -1,85 +1,146 @@
 import React, { useState } from "react";
-import { PROJECTS } from "../data/projects";
+import { X, ZoomIn, Image as ImageIcon } from "lucide-react";
+import { GALLERY_IMAGES } from "../data/projects";
 
 export default function ProjectShowcase() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activePreviewImage, setActivePreviewImage] = useState(null);
 
-  const categories = ["All", "Kitchens", "Staircases", "Flooring", "Interiors", "Exterior"];
+  // Divide 12 gallery images into 3 distinct rows (4 images each)
+  const row1 = GALLERY_IMAGES.slice(0, 4);
+  const row2 = GALLERY_IMAGES.slice(4, 8);
+  const row3 = GALLERY_IMAGES.slice(8, 12);
 
-  const filteredProjects = activeCategory === "All"
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category === activeCategory);
+  // Helper component to render a single gallery card
+  const GalleryCard = ({ item }) => (
+    <div
+      onClick={() => setActivePreviewImage(item)}
+      className="group relative w-72 sm:w-80 h-56 sm:h-64 rounded-2xl overflow-hidden border border-stone-border hover:border-amber-500/80 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer bg-stone-dark flex-shrink-0 mx-3"
+    >
+      {/* Image */}
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+        loading="lazy"
+      />
+
+      {/* Dark Vignette Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-stone-dark/90 via-stone-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+      {/* Zoom Hover Icon */}
+      <div className="absolute top-3 right-3 p-2 rounded-full bg-stone-dark/80 text-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 border border-amber-500/30">
+        <ZoomIn className="w-4 h-4" />
+      </div>
+
+      {/* Bottom Caption */}
+      <div className="absolute inset-x-0 bottom-0 p-4 space-y-0.5 text-white">
+        <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-amber-500 block">
+          {item.stoneName}
+        </span>
+        <h3 className="font-serif text-base font-bold text-white leading-snug line-clamp-1">
+          {item.title}
+        </h3>
+      </div>
+    </div>
+  );
 
   return (
-    <section id="projects" className="py-16 sm:py-20 bg-stone-surface border-b border-stone-border">
-      <div className="max-w-[100rem] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+    <section id="projects" className="py-16 sm:py-24 bg-stone-surface border-b border-stone-border overflow-hidden">
+      <div className="max-w-[100rem] mx-auto px-6 sm:px-8 lg:px-12 space-y-10">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-stone-dark">
-              <span className="w-6 h-px bg-amber-500" />
-              <span>Architectural Showcase</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-gradient-gold">
-              Natural Stone in Real Spaces
-            </h2>
-            <p className="text-sm text-stone-taupe max-w-lg">
-              Explore completed residential kitchen slabs, marble flooring elevations, and precision staircases.
-            </p>
+        {/* Section Header */}
+        <div className="space-y-4 text-left max-w-2xl">
+          <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-stone-dark">
+            <span className="w-6 h-px bg-amber-500" />
+            <span>Showroom &amp; Stone Gallery</span>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-semibold rounded transition-all cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-stone-dark text-white shadow-xs"
-                    : "bg-stone-bg text-stone-text hover:bg-stone-border/40"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
+            Showroom Gallery
+          </h2>
+          <p className="text-sm text-stone-taupe font-sans font-light leading-relaxed">
+            Explore our Mukkam showroom exterior, gangsaw slab displays, and premium natural granite varieties.
+          </p>
         </div>
 
-        {/* Masonry / Editorial Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((proj) => (
-            <div
-              key={proj.id}
-              className="group bg-stone-bg border border-stone-border rounded overflow-hidden hover:border-stone-accent transition-all duration-300 shadow-xs hover:shadow-md"
-            >
-              <div className="relative h-64 overflow-hidden bg-stone-dark">
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-dark/80 via-transparent to-transparent opacity-80" />
-                
-                <span className="absolute top-3 left-3 bg-stone-dark/95 text-amber-500 text-[9px] font-semibold uppercase tracking-[0.22em] px-2.5 py-1 rounded border border-amber-500/30">
-                  {proj.category}
-                </span>
-              </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="font-serif text-xl font-light text-stone-dark group-hover:text-stone-accent transition-colors">
-                  {proj.title}
-                </h3>
-                <div className="flex items-center justify-between text-xs text-stone-taupe pt-1">
-                  <span>Stone: <strong className="text-stone-dark">{proj.stoneUsed}</strong></span>
-                  <span>{proj.locationTag}</span>
-                </div>
-              </div>
+        {/* 3 Auto-Scrolling Marquee Rows */}
+        <div className="space-y-6 pt-2">
+          
+          {/* Row 1: Auto-Scroll Left */}
+          <div className="relative overflow-hidden w-full py-1">
+            <div className="animate-marquee-left flex items-center hover:[animation-play-state:paused] active:[animation-play-state:paused]">
+              {/* Duplicate array for seamless 360 loop */}
+              {[...row1, ...row1, ...row1, ...row1].map((item, idx) => (
+                <GalleryCard key={`r1-${idx}`} item={item} />
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Row 2: Auto-Scroll Right */}
+          <div className="relative overflow-hidden w-full py-1">
+            <div className="animate-marquee-right flex items-center hover:[animation-play-state:paused] active:[animation-play-state:paused]">
+              {[...row2, ...row2, ...row2, ...row2].map((item, idx) => (
+                <GalleryCard key={`r2-${idx}`} item={item} />
+              ))}
+            </div>
+          </div>
+
+          {/* Row 3: Auto-Scroll Left */}
+          <div className="relative overflow-hidden w-full py-1">
+            <div className="animate-marquee-left flex items-center hover:[animation-play-state:paused] active:[animation-play-state:paused]">
+              {[...row3, ...row3, ...row3, ...row3].map((item, idx) => (
+                <GalleryCard key={`r3-${idx}`} item={item} />
+              ))}
+            </div>
+          </div>
+
         </div>
 
       </div>
+
+      {/* Lightbox Fullscreen Preview Modal */}
+      {activePreviewImage && (
+        <div
+          className="fixed inset-0 z-50 bg-stone-dark/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setActivePreviewImage(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full bg-stone-dark rounded-2xl overflow-hidden border border-stone-border shadow-2xl space-y-4 p-4 sm:p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between text-white border-b border-stone-border/40 pb-4">
+              <div className="flex items-center gap-2.5">
+                <ImageIcon className="w-5 h-5 text-amber-500" />
+                <div>
+                  <h3 className="font-serif text-xl font-bold text-white">
+                    {activePreviewImage.title}
+                  </h3>
+                  <span className="text-xs text-amber-500 font-semibold">
+                    {activePreviewImage.stoneName}
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setActivePreviewImage(null)}
+                className="p-2 rounded-full bg-white/10 hover:bg-amber-600 text-white transition-colors cursor-pointer"
+                aria-label="Close preview"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Large Image */}
+            <div className="relative max-h-[75vh] overflow-hidden rounded-xl bg-black flex items-center justify-center">
+              <img
+                src={activePreviewImage.image}
+                alt={activePreviewImage.title}
+                className="max-h-[75vh] w-auto object-contain rounded-xl"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

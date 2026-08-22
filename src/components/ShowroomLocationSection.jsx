@@ -229,7 +229,7 @@ export default function ShowroomLocationSection({ onOpenSiteVisitModal }) {
                   ) : (
                     <>
                       <Send className="w-4 h-4 text-white" />
-                      <span>Send Message (Opens Email App)</span>
+                      <span>Send Message </span>
                     </>
                   )}
                 </button>

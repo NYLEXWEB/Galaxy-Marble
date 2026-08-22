@@ -1,68 +1,27 @@
 import React, { useState, useMemo } from "react";
-import { Search, Filter, MessageSquare, ShoppingBag, Eye, Sparkles, Check, ChevronRight } from "lucide-react";
-import { PRODUCTS, CATEGORIES, APPLICATIONS, COLOR_TONES, SURFACES } from "../data/products";
+import { Search, MessageSquare, ShoppingBag, Eye, Check } from "lucide-react";
+import { PRODUCTS } from "../data/products";
 import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
 
 export default function ProductCatalogue({
-  selectedCategoryFilter,
-  selectedApplicationFilter,
-  onSelectCategoryFilter,
-  onSelectApplicationFilter,
   onViewProductDetail,
   onAddToBasket,
   basketItems = []
 }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedColor, setSelectedColor] = useState("All");
-  const [selectedFinish, setSelectedFinish] = useState("All");
 
-  // Filtering Logic
+  // Filtering Logic based purely on Search Input
   const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) return PRODUCTS;
+    const q = searchQuery.toLowerCase();
     return PRODUCTS.filter((product) => {
-      // Search query filter
-      if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchesName = product.name.toLowerCase().includes(q);
-        const matchesCode = product.code.toLowerCase().includes(q);
-        const matchesCategory = product.category.toLowerCase().includes(q);
-        const matchesDescription = product.description.toLowerCase().includes(q);
-        if (!matchesName && !matchesCode && !matchesCategory && !matchesDescription) {
-          return false;
-        }
-      }
-
-      // Category filter
-      if (selectedCategoryFilter !== "all") {
-        const catObj = CATEGORIES.find(c => c.id === selectedCategoryFilter);
-        if (catObj && product.category !== catObj.name) {
-          return false;
-        }
-      }
-
-      // Application filter
-      if (selectedApplicationFilter !== "All") {
-        if (!product.applications.includes(selectedApplicationFilter)) {
-          return false;
-        }
-      }
-
-      // Color Tone filter
-      if (selectedColor !== "All") {
-        if (product.colorTone !== selectedColor) {
-          return false;
-        }
-      }
-
-      // Surface Finish filter
-      if (selectedFinish !== "All") {
-        if (product.finish !== selectedFinish) {
-          return false;
-        }
-      }
-
-      return true;
+      const matchesName = product.name.toLowerCase().includes(q);
+      const matchesCode = product.code.toLowerCase().includes(q);
+      const matchesCategory = product.category.toLowerCase().includes(q);
+      const matchesDescription = product.description.toLowerCase().includes(q);
+      return matchesName || matchesCode || matchesCategory || matchesDescription;
     });
-  }, [searchQuery, selectedCategoryFilter, selectedApplicationFilter, selectedColor, selectedFinish]);
+  }, [searchQuery]);
 
   const handleWhatsAppQuickEnquiry = (e, product) => {
     e.stopPropagation();
@@ -90,7 +49,7 @@ export default function ProductCatalogue({
               Explore Natural Stone Slabs
             </h2>
             <p className="text-sm text-stone-taupe max-w-xl font-sans font-light leading-relaxed">
-              Filter by category, color tone, or architectural application to inspect mirror-polished granite and imported marble.
+              Browse our live inventory of natural granite slabs available at our Mukkam showroom.
             </p>
           </div>
 
@@ -99,123 +58,12 @@ export default function ProductCatalogue({
             <Search className="w-4 h-4 text-stone-taupe absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by name, code, or finish..."
+              placeholder="Search by granite name or code..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-stone-surface border border-stone-border focus:border-stone-accent focus:ring-1 focus:ring-stone-accent rounded-lg pl-10 pr-4 py-3 text-xs text-stone-dark transition-all outline-none shadow-xs"
             />
           </div>
-        </div>
-
-        {/* Filter Controls Bar */}
-        <div className="p-4 bg-stone-surface border border-stone-border rounded-xl space-y-4 shadow-xs">
-          
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none whitespace-nowrap">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-taupe mr-2 flex-shrink-0 flex items-center gap-1.5">
-              <Filter className="w-3.5 h-3.5 text-stone-accent" />
-              <span>Category:</span>
-            </span>
-
-            <button
-              onClick={() => onSelectCategoryFilter("all")}
-              className={`px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] rounded-lg transition-all flex-shrink-0 cursor-pointer ${
-                selectedCategoryFilter === "all"
-                  ? "bg-stone-dark text-stone-bg shadow-md"
-                  : "bg-stone-bg text-stone-text hover:bg-stone-border/40"
-              }`}
-            >
-              All Slabs ({PRODUCTS.length})
-            </button>
-
-            {CATEGORIES.map((cat) => {
-              const count = PRODUCTS.filter(p => p.category === cat.name).length;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => onSelectCategoryFilter(cat.id)}
-                  className={`px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] rounded-lg transition-all flex-shrink-0 cursor-pointer ${
-                    selectedCategoryFilter === cat.id
-                      ? "bg-stone-dark text-stone-bg shadow-md"
-                      : "bg-stone-bg text-stone-text hover:bg-stone-border/40"
-                  }`}
-                >
-                  {cat.name} ({count})
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Secondary Sub-filters: Color & Application Dropdowns */}
-          <div className="pt-3 border-t border-stone-border/60 flex flex-wrap items-center justify-between gap-4">
-            
-            <div className="flex flex-wrap items-center gap-4 text-xs">
-              
-              {/* Application Filter */}
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-stone-taupe">Application:</span>
-                <select
-                  value={selectedApplicationFilter}
-                  onChange={(e) => onSelectApplicationFilter(e.target.value)}
-                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
-                >
-                  <option value="All">All Applications</option>
-                  {APPLICATIONS.map((app) => (
-                    <option key={app.id} value={app.title}>{app.title}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Color Tone Filter */}
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-stone-taupe">Color Tone:</span>
-                <select
-                  value={selectedColor}
-                  onChange={(e) => setSelectedColor(e.target.value)}
-                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
-                >
-                  <option value="All">All Colors</option>
-                  {COLOR_TONES.map((color) => (
-                    <option key={color} value={color}>{color}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Finish Filter */}
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-stone-taupe">Surface Finish:</span>
-                <select
-                  value={selectedFinish}
-                  onChange={(e) => setSelectedFinish(e.target.value)}
-                  className="bg-stone-bg border border-stone-border text-stone-dark font-medium rounded-md px-3 py-1.5 focus:outline-none focus:border-stone-accent"
-                >
-                  <option value="All">All Finishes</option>
-                  {SURFACES.map((surf) => (
-                    <option key={surf} value={surf}>{surf}</option>
-                  ))}
-                </select>
-              </div>
-
-            </div>
-
-            {/* Active Filters Clear Button */}
-            {(selectedCategoryFilter !== "all" || selectedApplicationFilter !== "All" || selectedColor !== "All" || selectedFinish !== "All" || searchQuery) && (
-              <button
-                onClick={() => {
-                  onSelectCategoryFilter("all");
-                  onSelectApplicationFilter("All");
-                  setSelectedColor("All");
-                  setSelectedFinish("All");
-                  setSearchQuery("");
-                }}
-                className="text-xs text-red-700 font-semibold hover:underline cursor-pointer"
-              >
-                Reset All Filters
-              </button>
-            )}
-
-          </div>
-
         </div>
 
         {/* Product Cards Grid */}
@@ -261,7 +109,7 @@ export default function ProductCatalogue({
                         className="px-4 py-2 bg-stone-surface text-stone-dark font-bold text-xs uppercase tracking-[0.15em] rounded-lg shadow-xl flex items-center gap-1.5 hover:bg-stone-accent hover:text-white transition-colors"
                       >
                         <Eye className="w-4 h-4" />
-                        <span>Inspect Slab Specs</span>
+                        <span>Inspect Slab</span>
                       </button>
                     </div>
                   </div>
@@ -269,28 +117,14 @@ export default function ProductCatalogue({
                   {/* Card Content Info */}
                   <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
                     
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs text-stone-taupe">
-                        <span>{product.finish} Finish</span>
-                        <span>{product.thickness}</span>
-                      </div>
-
-                      <h3 className="font-serif text-xl font-light text-stone-dark group-hover:text-stone-accent transition-colors line-clamp-1">
+                    <div className="space-y-2">
+                      <h3 className="font-serif text-xl font-bold text-stone-dark group-hover:text-stone-accent transition-colors line-clamp-1">
                         {product.name}
                       </h3>
 
-                      <p className="text-xs text-stone-taupe line-clamp-2 leading-relaxed font-light">
+                      <p className="text-xs text-stone-taupe line-clamp-3 leading-relaxed font-light">
                         {product.description}
                       </p>
-                    </div>
-
-                    {/* Suitable Applications Pills */}
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {product.applications.slice(0, 3).map((app) => (
-                        <span key={app} className="text-[9px] uppercase tracking-wider bg-stone-bg text-stone-dark px-2 py-0.5 rounded border border-stone-border">
-                          {app}
-                        </span>
-                      ))}
                     </div>
 
                     {/* Card Actions Footer */}
@@ -344,22 +178,16 @@ export default function ProductCatalogue({
           <div className="text-center py-16 bg-stone-surface border border-stone-border rounded-xl space-y-4">
             <Search className="w-12 h-12 text-stone-border mx-auto" />
             <h3 className="font-serif text-2xl font-light text-stone-dark">
-              No matching stone slabs found
+              No matching granite slabs found
             </h3>
             <p className="text-xs text-stone-taupe">
-              Try adjusting your search term or resetting active category filters.
+              Try adjusting your search term.
             </p>
             <button
-              onClick={() => {
-                onSelectCategoryFilter("all");
-                onSelectApplicationFilter("All");
-                setSelectedColor("All");
-                setSelectedFinish("All");
-                setSearchQuery("");
-              }}
+              onClick={() => setSearchQuery("")}
               className="px-6 py-2.5 bg-stone-dark text-stone-bg text-xs font-semibold uppercase tracking-[0.18em] rounded-lg hover:bg-stone-accent transition-colors cursor-pointer"
             >
-              Reset Filters
+              Clear Search
             </button>
           </div>
         )}

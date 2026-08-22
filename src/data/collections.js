@@ -4,52 +4,45 @@
 export const COLLECTIONS = [
     {
         id: "all",
-        name: "All Collections",
-        tagline: "Explore complete catalogue",
-        count: 12,
-        image: "/images/black_galaxy.png"
-    },
-    {
-        id: "granite",
-        name: "Granite Collection",
-        tagline: "Durable natural granite slabs for high-traffic surfaces",
-        count: 6,
-        image: "/images/black_galaxy.png"
-    },
-    {
-        id: "marble",
-        name: "Marble Collection",
-        tagline: "Timeless imported and Indian marble for luxurious spaces",
-        count: 4,
-        image: "/images/white_italian.png"
+        name: "All Granite Slabs",
+        tagline: "Explore complete showroom inventory",
+        count: 9,
+        image: "/Granites/Black markino.jpg"
     },
     {
         id: "black-granite",
-        name: "Black Granite",
-        tagline: "Classic dark polished & honed granite slabs",
-        count: 3,
-        image: "/images/absolute_black.png"
+        name: "Black Granite Collection",
+        tagline: "Black Markino, Khammam Black, Black Pearl & Leather Black",
+        count: 4,
+        image: "/Granites/Kammam black.png"
     },
     {
-        id: "white-granite",
-        name: "White Granite",
-        tagline: "Bright speckled light granite for modern interiors",
+        id: "exotic-granite",
+        name: "Exotic & Blue Granite",
+        tagline: "Honey Blue & Safari Blue rare flowing wave slabs",
         count: 2,
-        image: "/images/kashmir_white.png"
+        image: "/Granites/Honey blue.png"
     },
     {
         id: "grey-granite",
-        name: "Grey Granite",
-        tagline: "Subtle metallic grey & silver architectural stone",
-        count: 2,
-        image: "/images/steel_grey.png"
+        name: "Grey & Metallic Granite",
+        tagline: "Steel Grey versatile metallic crystal slabs",
+        count: 1,
+        image: "/Granites/Steel grey.png"
     },
     {
-        id: "premium-collection",
-        name: "Premium Collection",
-        tagline: "Exclusive high-grade architectural stone slabs",
-        count: 3,
-        image: "/images/viscon_white.png"
+        id: "brown-red-granite",
+        name: "Coffee Brown & Tumkur Red",
+        tagline: "Rich espresso brown & ruby red durable natural stone",
+        count: 2,
+        image: "/Granites/Coffee Brown.jpg"
+    },
+    {
+        id: "leather-finish",
+        name: "Textured Leather Finish",
+        tagline: "Tactile, slip-resistant matte black granite slabs",
+        count: 1,
+        image: "/Granites/Leather black.png"
     }
 ];
 
@@ -57,43 +50,43 @@ export const APPLICATION_DISCOVERY = [
     {
         id: "Kitchen",
         title: "Kitchen Countertops",
-        description: "Heat-resistant, stain-durable granite & quartz surfaces",
-        image: "/images/granite_kitchen_hero_1787249036600.png",
+        description: "Heat-resistant, stain-durable granite surfaces",
+        image: "/Granites/Kammam black.png",
         icon: "UtensilsCrossed"
     },
     {
         id: "Staircase",
         title: "Staircase & Steps",
         description: "Anti-skid full bullnose & half bullnose tread slabs",
-        image: "/images/tan_brown.png",
+        image: "/Granites/Coffee Brown.jpg",
         icon: "Layers"
     },
     {
         id: "Flooring",
         title: "Flooring Solutions",
-        description: "Seamless polished granite and marble floor tiles & gangsaw slabs",
-        image: "/images/katni_beige.png",
+        description: "Seamless polished granite gangsaw slabs & room tiles",
+        image: "/Granites/Black markino.jpg",
         icon: "Grid"
     },
     {
         id: "Bathroom",
         title: "Bathroom Vanity & Cladding",
         description: "Moisture-resistant stone vanity tops & feature walls",
-        image: "/images/white_italian.png",
+        image: "/Granites/Leather black.png",
         icon: "Sparkles"
     },
     {
         id: "Wall",
         title: "Interior Wall Elevation",
-        description: "Book-matched marble cladding & textured granite elevations",
-        image: "/images/viscon_white.png",
+        description: "Honey Blue & Safari Blue exotic granite feature panels",
+        image: "/Granites/Honey blue.png",
         icon: "LayoutGrid"
     },
     {
         id: "Exterior",
         title: "Exterior Paving & Cladding",
-        description: "Weather-durable flamed and leather finish granite",
-        image: "/images/steel_grey.png",
+        description: "Weather-durable Tumkur Red and Steel Grey granite",
+        image: "/Granites/Thumkoor red.jpg",
         icon: "Home"
     }
 ];
