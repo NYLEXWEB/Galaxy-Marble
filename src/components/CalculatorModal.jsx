@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState, useMemo } from "react";
 import { X, Calculator, MessageSquare, AlertCircle, Sparkles } from "lucide-react";
 import { PRODUCTS } from "../data/products";
 import { calculateArea, calculateStaircaseArea, calculateWithWastage, CALCULATOR_DISCLAIMER } from "../utils/calculator";
-import { buildCalculatorWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
+import { buildCalculatorWhatsAppMessage, openWhatsAppWithImage } from "../utils/whatsapp";
 
 export default function CalculatorModal({ isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("Kitchen Countertop");
@@ -48,7 +50,8 @@ export default function CalculatorModal({ isOpen, onClose }) {
       area: finalAreaWithWastage,
       selectedProduct: selectedProductObj
     });
-    openWhatsApp(msg);
+    const imgUrl = selectedProductObj?.images?.[0] || "";
+    openWhatsAppWithImage(msg, imgUrl);
   };
 
   return (

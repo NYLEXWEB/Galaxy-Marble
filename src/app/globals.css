@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
 
   --color-stone-bg: #FAFAFA;
   --color-stone-dark: #111111;
@@ -106,7 +106,6 @@ html {
 
 /* Keyframe Animations */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -118,7 +117,6 @@ html {
 }
 
 @keyframes pulseGlow {
-
   0%,
   100% {
     opacity: 0.4;

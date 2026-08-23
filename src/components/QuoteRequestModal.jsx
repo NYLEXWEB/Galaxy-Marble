@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { X, MessageSquare, Image as ImageIcon } from "lucide-react";
 import { PRODUCTS } from "../data/products";

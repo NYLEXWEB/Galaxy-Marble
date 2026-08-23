@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
-import { X, MessageSquare, Plus, Check } from "lucide-react";
-import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
+import { X, MessageSquare, Plus, Check, ShieldCheck, ArrowRight } from "lucide-react";
+import { buildSingleProductWhatsAppMessage, openWhatsAppWithImage } from "../utils/whatsapp";
 
 export default function ProductDetailModal({
   product,
@@ -20,7 +22,8 @@ export default function ProductDetailModal({
       quantity,
       userNote
     });
-    openWhatsApp(msg);
+    const imgUrl = product.images[activeImageIndex] || product.images[0] || "";
+    openWhatsAppWithImage(msg, imgUrl);
   };
 
   return (
@@ -45,7 +48,7 @@ export default function ProductDetailModal({
           <div className="relative h-64 sm:h-80 md:h-96 rounded overflow-hidden bg-stone-dark/40">
             <img
               src={product.images[activeImageIndex] || product.images[0]}
-              alt={product.name}
+              alt={`${product.name} detail view - Galaxy Granite & Marble`}
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-3 left-3 bg-stone-dark/95 text-amber-500 text-[10px] font-bold uppercase tracking-[0.18em] px-2.5 py-1 rounded border border-amber-500/30">
@@ -64,7 +67,7 @@ export default function ProductDetailModal({
                     activeImageIndex === idx ? "border-stone-accent opacity-100" : "border-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`${product.name} gallery image ${idx + 1} - Galaxy Granite & Marble`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

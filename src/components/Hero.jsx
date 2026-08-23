@@ -16,19 +16,23 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-[100dvh] lg:min-h-[660px] flex items-center overflow-hidden border-b border-stone-border bg-stone-dark -mt-20 sm:-mt-24 pt-28 sm:pt-36 lg:pt-40">
       
-      {/* 1. Full-screen Background Image (Daytime Exterior Showroom Photo) */}
+      {/* 1. Full-screen Background Video/Image (Showroom Walkthrough Video on Desktop, Portrait Image on Mobile) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        {/* Mobile View Image (Portrait Crop) */}
+        {/* Mobile View Portrait Image */}
         <img
           src="/images/showroom_mobile.jpg"
-          alt="Galaxy Showroom Exterior"
+          alt="Galaxy Granite & Marble physical showroom in Mukkam, Kozhikode, Kerala - Mobile View"
           className="lg:hidden absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Desktop View Image (Landscape Crop) */}
-        <img
-          src="/images/showroom_day.jpg"
-          alt="Galaxy Showroom Exterior"
-          className="hidden lg:block absolute inset-0 w-full h-full object-cover object-right"
+        {/* Desktop View Video */}
+        <video
+          src="/images/showroom_bg.webm"
+          poster="/images/showroom_day.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hidden lg:block absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Adaptive Dark Overlay for Text Readability */}
         <div className="absolute inset-0 bg-stone-dark/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-stone-dark/95 lg:via-stone-dark/60 lg:to-transparent" />

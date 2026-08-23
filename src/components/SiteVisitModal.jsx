@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { X, Calendar, MessageSquare, MapPin } from "lucide-react";
 import { buildSiteVisitWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";

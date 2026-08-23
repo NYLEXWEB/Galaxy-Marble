@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
-import { X, Trash2, ShoppingBag, Plus, Minus, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import { buildBasketWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
+import { X, Trash2, MessageSquare, ShoppingBag, Plus, Minus, ArrowRight, ShieldCheck, ShieldAlert, Sparkles } from "lucide-react";
+import { buildBasketWhatsAppMessage, openWhatsAppWithImage } from "../utils/whatsapp";
 
 // Official WhatsApp Brand SVG Icon
 const WhatsAppIcon = ({ className = "w-4 h-4" }) => (
@@ -36,7 +38,8 @@ export default function EnquiryBasketDrawer({
       message
     });
 
-    openWhatsApp(whatsappMsg);
+    const imgUrl = items[0]?.product?.images?.[0] || "";
+    openWhatsAppWithImage(whatsappMsg, imgUrl);
   };
 
   return (

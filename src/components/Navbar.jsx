@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Menu, X, ShoppingBag, MessageSquare, Phone, MapPin, ChevronRight } from "lucide-react";
 import { BUSINESS_CONFIG } from "../config/business";
@@ -34,6 +36,21 @@ export default function Navbar({
     };
   }, [mobileMenuOpen]);
 
+  const handleNavClick = (e, href) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+      setMobileMenuOpen(false);
+    }
+  };
+
   const navLinks = [
     { name: "Home", href: "#hero" },
     { name: "Collections", href: "#collections" },
@@ -56,7 +73,7 @@ export default function Navbar({
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             {/* Logo Brand */}
-            <a href="#hero" className="flex flex-col group leading-none">
+            <a href="#hero" onClick={(e) => handleNavClick(e, "#hero")} className="flex flex-col group leading-none">
               <span className={`font-serif text-xl sm:text-2xl transition-colors font-bold tracking-tight ${
                 isScrolled ? "text-[#171717] group-hover:text-[#A8875A]" : "text-white group-hover:text-[#A8875A]"
               }`}>
@@ -66,7 +83,7 @@ export default function Navbar({
                 Granite &amp; Marble
               </span>
             </a>
-
+  
             {/* Desktop Nav Links */}
             <nav className={`hidden lg:flex items-center space-x-8 text-xs font-semibold uppercase tracking-[0.18em] ${
               isScrolled ? "text-[#222222]" : "text-white/90"
@@ -75,6 +92,7 @@ export default function Navbar({
                 <a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="hover:text-[#A8875A] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#A8875A] hover:after:w-full after:transition-all"
                 >
                   {link.name}
@@ -158,7 +176,7 @@ export default function Navbar({
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-white/5 transition-all text-xl font-serif font-bold text-white hover:text-amber-500 border-b border-white/10"
               >
                 <span>{link.name}</span>

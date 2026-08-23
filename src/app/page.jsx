@@ -1,39 +1,68 @@
-import React, { useState, useEffect } from "react";
-import { ShoppingBag, X, MessageSquare } from "lucide-react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import TrustBar from "./components/TrustBar";
-import CollectionDiscovery from "./components/CollectionDiscovery";
-import ProductCatalogue from "./components/ProductCatalogue";
-import ProductDetailModal from "./components/ProductDetailModal";
-import EnquiryBasketDrawer from "./components/EnquiryBasketDrawer";
-import QuoteRequestModal from "./components/QuoteRequestModal";
-import SiteVisitModal from "./components/SiteVisitModal";
-import Toast from "./components/Toast";
-import FloatingActions from "./components/FloatingActions";
-import ProjectShowcase from "./components/ProjectShowcase";
-import ReviewSection from "./components/ReviewSection";
-import ShowroomLocationSection from "./components/ShowroomLocationSection";
-import Footer from "./components/Footer";
+"use client";
 
-export default function App() {
-  // LocalStorage Enquiry Basket Persistence
-  const [basketItems, setBasketItems] = useState(() => {
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import TrustBar from "../components/TrustBar";
+import CollectionDiscovery from "../components/CollectionDiscovery";
+import ProductCatalogue from "../components/ProductCatalogue";
+import ProductDetailModal from "../components/ProductDetailModal";
+import EnquiryBasketDrawer from "../components/EnquiryBasketDrawer";
+import QuoteRequestModal from "../components/QuoteRequestModal";
+import SiteVisitModal from "../components/SiteVisitModal";
+import Toast from "../components/Toast";
+import FloatingActions from "../components/FloatingActions";
+import ProjectShowcase from "../components/ProjectShowcase";
+import ReviewSection from "../components/ReviewSection";
+import ShowroomLocationSection from "../components/ShowroomLocationSection";
+import Footer from "../components/Footer";
+
+export default function Page() {
+  const [basketItems, setBasketItems] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Load from localStorage only after component mounts to avoid hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
     try {
       const saved = localStorage.getItem("galaxy_marble_enquiry_basket");
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
+      if (saved) {
+        setBasketItems(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error("Failed to load enquiry basket from LocalStorage", e);
     }
-  });
+  }, []);
 
+  // Save to localStorage when basketItems changes
   useEffect(() => {
+    if (!isMounted) return;
     try {
       localStorage.setItem("galaxy_marble_enquiry_basket", JSON.stringify(basketItems));
     } catch (e) {
       console.error("Failed to save enquiry basket to LocalStorage", e);
     }
-  }, [basketItems]);
+  }, [basketItems, isMounted]);
+
+  // Listen for custom event when product image is copied to clipboard
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const handleImageCopied = (e) => {
+      const { copied } = e.detail;
+      if (copied) {
+        setToast({
+          message: "Product image copied! You can paste (Ctrl+V) it in the WhatsApp chat.",
+          type: "basket"
+        });
+      }
+    };
+
+    window.addEventListener("whatsapp_image_copied", handleImageCopied);
+    return () => {
+      window.removeEventListener("whatsapp_image_copied", handleImageCopied);
+    };
+  }, [isMounted]);
 
   // Toast Notification State
   const [toast, setToast] = useState(null); // { message: string, type: 'basket' | 'compare' }
@@ -102,6 +131,23 @@ export default function App() {
       catalogueEl.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Prevent rendering interactive elements dependent on mounting during SSR
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-stone-bg text-stone-text font-sans antialiased flex flex-col justify-between selection:bg-stone-accent selection:text-stone-bg relative">
+        <Navbar
+          basketCount={0}
+          onOpenBasket={() => {}}
+          onOpenQuoteModal={() => {}}
+        />
+        <main className="flex-grow flex items-center justify-center py-20">
+          <div className="animate-pulse text-stone-taupe tracking-wider text-xs uppercase">Loading Showroom...</div>
+        </main>
+        <Footer onOpenQuoteModal={() => {}} />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-stone-bg text-stone-text font-sans antialiased flex flex-col justify-between selection:bg-stone-accent selection:text-stone-bg relative">

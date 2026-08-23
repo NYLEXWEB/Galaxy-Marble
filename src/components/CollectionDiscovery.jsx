@@ -33,7 +33,7 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
               {/* Background Image */}
               <img
                 src={cat.image || "/images/black_galaxy.png"}
-                alt={cat.name}
+                alt={`${cat.name} stone collection - Galaxy Granite & Marble`}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
 
@@ -96,7 +96,7 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
                   {/* Background Image */}
                   <img
                     src={app.image}
-                    alt={app.title}
+                    alt={`${app.title} application - Galaxy Granite & Marble`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   {/* Gradient Overlay */}

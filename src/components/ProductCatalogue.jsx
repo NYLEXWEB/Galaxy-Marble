@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState, useMemo } from "react";
 import { Search, MessageSquare, ShoppingBag, Eye, Check } from "lucide-react";
 import { PRODUCTS } from "../data/products";
-import { buildSingleProductWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
+import { buildSingleProductWhatsAppMessage, openWhatsAppWithImage } from "../utils/whatsapp";
 
 export default function ProductCatalogue({
   onViewProductDetail,
@@ -25,8 +27,9 @@ export default function ProductCatalogue({
 
   const handleWhatsAppQuickEnquiry = (e, product) => {
     e.stopPropagation();
-    const msg = buildSingleProductWhatsAppMessage(product, "40");
-    openWhatsApp(msg);
+    const msg = buildSingleProductWhatsAppMessage({ product, quantity: "40" });
+    const imgUrl = product.images?.[0] || "";
+    openWhatsAppWithImage(msg, imgUrl);
   };
 
   const handleAddToBasketClick = (e, product) => {
@@ -82,7 +85,7 @@ export default function ProductCatalogue({
                   <div className="relative h-64 overflow-hidden bg-stone-dark">
                     <img
                       src={product.images[0]}
-                      alt={product.name}
+                      alt={`${product.name} natural stone slab - Galaxy Granite & Marble`}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
                     

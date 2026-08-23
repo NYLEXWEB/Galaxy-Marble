@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { X, ZoomIn, Image as ImageIcon } from "lucide-react";
 import { GALLERY_IMAGES } from "../data/projects";
@@ -19,7 +21,7 @@ export default function ProjectShowcase() {
       {/* Image */}
       <img
         src={item.image}
-        alt={item.title}
+        alt={`${item.title} - Natural Stone Installation by Galaxy Granite & Marble`}
         className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
         loading="lazy"
       />
@@ -124,7 +126,7 @@ export default function ProjectShowcase() {
             <div className="relative max-h-[75vh] overflow-hidden rounded-xl bg-black flex items-center justify-center">
               <img
                 src={activePreviewImage.image}
-                alt={activePreviewImage.title}
+                alt={`${activePreviewImage.title} project image - Galaxy Granite & Marble`}
                 className="max-h-[75vh] w-auto object-contain rounded-xl"
               />
             </div>
