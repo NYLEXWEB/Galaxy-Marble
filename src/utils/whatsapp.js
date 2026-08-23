@@ -21,7 +21,7 @@ export const openWhatsApp = (message) => {
 };
 
 /**
- * Build Single Product WhatsApp Message (Clean Text without Raw URL)
+ * Build Single Product WhatsApp Message
  */
 export const buildSingleProductWhatsAppMessage = ({ product, quantity = "", userNote = "" }) => {
     let msg = `Hello Galaxy Granite & Marble,\n\nI am interested in the following granite slab:\n\n*Product:* ${product.name}\n*Category:* ${product.category}\n*Finish:* ${product.finish || "Mirror Polished"}`;
@@ -39,7 +39,7 @@ export const buildSingleProductWhatsAppMessage = ({ product, quantity = "", user
 };
 
 /**
- * Build Multi-Product Enquiry Basket WhatsApp Message (Clean Text without Raw URL)
+ * Build Multi-Product Enquiry Basket WhatsApp Message
  */
 export const buildBasketWhatsAppMessage = (items, customerDetails = {}) => {
     let msg = `Hello Galaxy Granite & Marble,\n\nI would like to enquire about the following granite slabs:\n\n`;
@@ -120,98 +120,8 @@ export const buildQuoteRequestWhatsAppMessage = ({ name, phone, requirement, pro
 };
 
 /**
- * Helper to convert Blob to PNG Blob using a temporary Canvas
+ * Direct WhatsApp redirection (No OS share dialogs or platform options)
  */
-const convertBlobToPng = (blob) => {
-    return new Promise((resolve, reject) => {
-        const img = new globalThis.Image();
-        const objectUrl = URL.createObjectURL(blob);
-        img.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext("2d");
-            if (ctx) {
-                ctx.drawImage(img, 0, 0);
-                canvas.toBlob((pngBlob) => {
-                    URL.revokeObjectURL(objectUrl);
-                    if (pngBlob) {
-                        resolve(pngBlob);
-                    } else {
-                        reject(new Error("Canvas conversion to PNG blob failed"));
-                    }
-                }, "image/png");
-            } else {
-                URL.revokeObjectURL(objectUrl);
-                reject(new Error("Failed to get 2D canvas context"));
-            }
-        };
-        img.onerror = () => {
-            URL.revokeObjectURL(objectUrl);
-            reject(new Error("Loading image failed for PNG conversion"));
-        };
-        img.src = objectUrl;
-    });
-};
-
-/**
- * Open WhatsApp and attach/copy image if supported
- */
-export const openWhatsAppWithImage = async (message, imageUrl) => {
-    if (typeof window === "undefined") {
-        return;
-    }
-
-    if (!imageUrl) {
-        openWhatsApp(message);
-        return;
-    }
-
-    const absoluteUrl = imageUrl.startsWith("http")
-        ? imageUrl
-        : `${window.location.origin}${imageUrl}`;
-
-    // 1. Try Web Share API (attaches real file payload on supported devices)
-    if (navigator.share && navigator.canShare) {
-        try {
-            const response = await fetch(absoluteUrl);
-            const blob = await response.blob();
-            const fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1) || "granite_slab.png";
-            const file = new File([blob], fileName, { type: blob.type || "image/png" });
-
-            if (navigator.canShare({ files: [file] })) {
-                await navigator.share({
-                    files: [file],
-                    title: "Galaxy Granite & Marble",
-                    text: message
-                });
-                return;
-            }
-        } catch (err) {
-            console.warn("Web Share API file attachment failed or was cancelled:", err);
-        }
-    }
-
-    // 2. Fallback: Clipboard API (copies image blob so user can paste directly into WhatsApp chat)
-    if (navigator.clipboard && navigator.clipboard.write) {
-        try {
-            const response = await fetch(absoluteUrl);
-            const blob = await response.blob();
-
-            let pngBlob = blob;
-            if (blob.type !== "image/png") {
-                pngBlob = await convertBlobToPng(blob);
-            }
-
-            const item = new ClipboardItem({
-                "image/png": pngBlob
-            });
-            await navigator.clipboard.write([item]);
-        } catch (err) {
-            console.error("Failed to copy image to clipboard:", err);
-        }
-    }
-
-    // 3. Open WhatsApp direct chat
+export const openWhatsAppWithImage = (message, imageUrl) => {
     openWhatsApp(message);
 };
