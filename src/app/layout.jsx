@@ -21,7 +21,7 @@ import { BUSINESS_CONFIG } from "../config/business";
 
 export const metadata = {
   metadataBase: new URL("https://galaxygranites.co.in"),
-  title: "Best Granite & Marble Showroom in Kozhikode, Kerala | Galaxy Granite & Marble",
+  title: "Galaxy Granite & Marble | Best Granite & Marble Showroom in Mukkam, Kozhikode",
   description: "Explore premium granite and marble collections for kitchens, staircases, flooring, and interiors at Galaxy Granite & Marble, Mukkam, Kerala. Get instant quotes via WhatsApp.",
   keywords: [
     "Galaxy Granite & Marble",
