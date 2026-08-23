@@ -91,9 +91,6 @@ export const buildCalculatorWhatsAppMessage = ({ requirementType, length, width,
     if (selectedProduct) {
         const imageUrl = selectedProduct.images?.[0] ? `${origin}${selectedProduct.images[0]}` : "";
         msg += `Preferred Stone: ${selectedProduct.name}\n`;
-        if (imageUrl) {
-            msg += `Slab Photo: ${imageUrl}\n`;
-        }
     }
 
     if (userNotes) {
