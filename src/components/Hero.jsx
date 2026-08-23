@@ -46,9 +46,9 @@ export default function Hero() {
           <div className="lg:col-span-7 space-y-6 text-left text-white">
             
             {/* Headline */}
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.08]">
               Natural Granite &amp; Marble. <br />
-              <span className="italic font-normal text-amber-600">Designed for Beautiful Spaces.</span>
+              <span className="italic font-normal text-[#A8875A]">Designed for Beautiful Spaces.</span>
             </h1>
 
             {/* Description */}
@@ -68,9 +68,9 @@ export default function Hero() {
 
               <button
                 onClick={handleWhatsAppHero}
-                className="px-6 sm:px-7 py-3.5 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-[0.15em] rounded-lg border border-white/20 hover:border-amber-500 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer shadow-xs backdrop-blur-xs"
+                className="px-6 sm:px-7 py-3.5 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-[0.15em] rounded-lg border border-white/20 hover:border-[#A8875A] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer shadow-xs backdrop-blur-xs"
               >
-                <MessageSquare className="w-4 h-4 text-amber-500" />
+                <MessageSquare className="w-4 h-4 text-[#A8875A]" />
                 <span>Get Price on WhatsApp</span>
               </button>
             </div>
@@ -78,7 +78,7 @@ export default function Hero() {
             {/* Quick Metrics Bar */}
             <div className="pt-6 border-t border-white/15 grid grid-cols-3 gap-4 max-w-lg">
               <div>
-                <span className="font-serif text-2xl sm:text-4xl font-bold text-white">50<span className="text-amber-500 font-normal">+</span></span>
+                <span className="font-serif text-2xl sm:text-4xl font-bold text-white">50<span className="text-[#A8875A] font-normal">+</span></span>
                 <span className="block text-[10px] sm:text-[11px] text-stone-bg/60 font-medium uppercase tracking-[0.2em] mt-1">Slab Varieties</span>
               </div>
               <div>

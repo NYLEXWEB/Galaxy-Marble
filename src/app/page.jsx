@@ -14,6 +14,7 @@ import Toast from "../components/Toast";
 import FloatingActions from "../components/FloatingActions";
 import ProjectShowcase from "../components/ProjectShowcase";
 import ReviewSection from "../components/ReviewSection";
+import FAQSection from "../components/FAQSection";
 import ShowroomLocationSection from "../components/ShowroomLocationSection";
 import Footer from "../components/Footer";
 
@@ -192,6 +193,9 @@ export default function Page() {
 
           {/* Customer Reviews Section */}
           <ReviewSection />
+
+          {/* Frequently Asked Questions */}
+          <FAQSection />
 
           {/* Showroom Location & Contact Section */}
           <ShowroomLocationSection
