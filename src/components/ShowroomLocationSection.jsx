@@ -25,7 +25,7 @@ export default function ShowroomLocationSection({ onOpenSiteVisitModal }) {
     if (!formData.name || !formData.contact) return;
 
     // Construct mailto link to launch email app with pre-filled values
-    const recipientEmail = "galaxygranitemukkam@gmail.com";
+    const recipientEmail = "galaxygraniteandmarbles@gmail.com";
     const subject = encodeURIComponent(`Stone Enquiry from ${formData.name} — Galaxy Marble Website`);
     const body = encodeURIComponent(
       `Hello Galaxy Granite & Marble Team,\n\nI am interested in natural stone slabs from your Mukkam showroom.\n\n` +

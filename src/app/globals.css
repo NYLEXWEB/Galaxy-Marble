@@ -21,6 +21,8 @@
     color: var(--color-stone-text);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -104,15 +106,15 @@ html {
   box-shadow: 0 10px 30px -5px rgba(168, 135, 90, 0.35);
 }
 
-/* Keyframe Animations */
+/* Hardware-Accelerated Keyframe Animations */
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translate3d(0, 0px, 0);
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translate3d(0, -8px, 0);
   }
 }
 
@@ -131,43 +133,47 @@ html {
 
 .animate-float {
   animation: float 5s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-pulse-glow {
   animation: pulseGlow 4s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
-/* Continuous Infinite Marquee Scroll Animations */
+/* Continuous Infinite Marquee Scroll Animations (GPU Composited) */
 @keyframes marqueeScrollLeft {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes marqueeScrollRight {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-marquee-left {
   display: flex;
   width: max-content;
-  animation: marqueeScrollLeft 25s linear infinite;
+  will-change: transform;
+  animation: marqueeScrollLeft 30s linear infinite;
 }
 
 .animate-marquee-right {
   display: flex;
   width: max-content;
-  animation: marqueeScrollRight 30s linear infinite;
+  will-change: transform;
+  animation: marqueeScrollRight 35s linear infinite;
 }
 
 .animate-marquee-left:hover,

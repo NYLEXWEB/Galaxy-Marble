@@ -43,7 +43,9 @@ export const metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/images/galaxy_granites_logo.png",
+    shortcut: "/images/galaxy_granites_logo.png",
+    apple: "/images/galaxy_granites_logo.png",
   },
   openGraph: {
     title: "Galaxy Granite & Marble — Premium Digital Showroom",
