@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { X, ZoomIn, Image as ImageIcon } from "lucide-react";
 import { GALLERY_IMAGES } from "../data/projects";
+import { BUSINESS_CONFIG } from "../config/business";
 
 export default function ProjectShowcase() {
   const [activePreviewImage, setActivePreviewImage] = useState(null);
@@ -47,10 +48,10 @@ export default function ProjectShowcase() {
             <span>Showroom &amp; Stone Gallery</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
-            Showroom Gallery
+            {BUSINESS_CONFIG.name} Gallery
           </h2>
           <p className="text-sm text-stone-taupe font-sans font-light leading-relaxed">
-            Explore our Mukkam showroom exterior, gangsaw slab displays, and premium natural granite varieties.
+            Explore our Mukkam, Kozhikode showroom exterior, premium natural granite gangsaw slab displays, and imported marble installations across Kerala.
           </p>
         </div>
 

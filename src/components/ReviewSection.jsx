@@ -44,11 +44,11 @@ export default function ReviewSection() {
             </div>
             
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-gradient-gold">
-              See What Our Customers Say
+              Customer Reviews for Galaxy Granite &amp; Marble
             </h2>
 
             <p className="text-sm text-[#817970] font-sans leading-relaxed">
-              Authentic customer testimonials from our Google Business Profile in Mukkam, Kozhikode.
+              Authentic customer reviews for premium granites and custom kitchen countertop stones from our Google Business Profile in Mukkam, Kozhikode.
             </p>
           </div>
 

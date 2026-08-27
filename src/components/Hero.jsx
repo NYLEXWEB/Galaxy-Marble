@@ -45,15 +45,22 @@ export default function Hero() {
           {/* Left Column: Clean Unboxed Editorial Copy & Actions (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-left text-white">
             
+            {/* Business Name Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/5 border border-white/10">
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] text-[#A8875A]">
+                {BUSINESS_CONFIG.name}
+              </span>
+            </div>
+
             {/* Headline */}
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.08]">
-              Natural Granite &amp; Marble. <br />
-              <span className="italic font-normal text-[#A8875A]">Designed for Beautiful Spaces.</span>
+              Premium Granite &amp; <br />
+              <span className="italic font-normal text-[#A8875A]">Imported Marble in Kerala</span>
             </h1>
 
             {/* Description */}
             <p className="text-sm sm:text-base text-stone-bg/85 max-w-xl leading-relaxed font-sans font-light">
-              Discover Black Markino, Khammam Black, Honey Blue, Leather Black, and Steel Grey granite slabs directly from our Mukkam showroom.
+              Welcome to {BUSINESS_CONFIG.name}, the leading natural stone and granite showroom in Mukkam, Kozhikode, Kerala. We specialize in high-quality South Indian granite slabs, imported Italian white marble, custom kitchen countertops, and staircase steps.
             </p>
 
             {/* Action Buttons */}

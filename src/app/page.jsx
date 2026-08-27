@@ -17,6 +17,7 @@ import ReviewSection from "../components/ReviewSection";
 import FAQSection from "../components/FAQSection";
 import ShowroomLocationSection from "../components/ShowroomLocationSection";
 import Footer from "../components/Footer";
+import AboutSection from "../components/AboutSection";
 
 export default function Page() {
   const [basketItems, setBasketItems] = useState([]);
@@ -139,20 +140,20 @@ export default function Page() {
       <div className="min-h-screen bg-stone-bg text-stone-text font-sans antialiased flex flex-col justify-between selection:bg-stone-accent selection:text-stone-bg relative">
         <Navbar
           basketCount={0}
-          onOpenBasket={() => {}}
-          onOpenQuoteModal={() => {}}
+          onOpenBasket={() => { }}
+          onOpenQuoteModal={() => { }}
         />
         <main className="flex-grow flex items-center justify-center py-20">
           <div className="animate-pulse text-stone-taupe tracking-wider text-xs uppercase">Loading Showroom...</div>
         </main>
-        <Footer onOpenQuoteModal={() => {}} />
+        <Footer onOpenQuoteModal={() => { }} />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-stone-bg text-stone-text font-sans antialiased flex flex-col justify-between selection:bg-stone-accent selection:text-stone-bg relative">
-      
+
       {/* Top Header & Navigation */}
       <div>
         <Navbar
@@ -176,6 +177,9 @@ export default function Page() {
             onSelectCategory={handleCategorySelectFromDiscovery}
             onSelectApplication={handleApplicationSelectFromDiscovery}
           />
+
+          {/* Homepage Introductory About Section */}
+          <AboutSection />
 
           {/* Complete Product Catalogue & Search */}
           <ProductCatalogue

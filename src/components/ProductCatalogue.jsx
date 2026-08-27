@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { Search, MessageSquare, ShoppingBag, Eye, Check } from "lucide-react";
 import { PRODUCTS } from "../data/products";
+import { BUSINESS_CONFIG } from "../config/business";
 import { buildSingleProductWhatsAppMessage, openWhatsAppWithImage } from "../utils/whatsapp";
 
 export default function ProductCatalogue({
@@ -49,10 +50,10 @@ export default function ProductCatalogue({
               <span>Full Showroom Inventory</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
-              Explore Natural Stone Slabs
+              Galaxy Granite &amp; Marble Catalogue
             </h2>
             <p className="text-sm text-stone-taupe max-w-xl font-sans font-light leading-relaxed">
-              Browse our live inventory of natural granite slabs available at our Mukkam showroom.
+              Browse the live slab inventory at Galaxy Granite &amp; Marble showroom in Mukkam, Kozhikode. Search premium South Indian granites, imported white marbles, and high-density countertop stones.
             </p>
           </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight, Sparkles, UtensilsCrossed, Layers, Grid, LayoutGrid, Home } from "lucide-react";
 import { COLLECTIONS, APPLICATION_DISCOVERY } from "../data/collections";
+import { BUSINESS_CONFIG } from "../config/business";
 
 export default function CollectionDiscovery({ onSelectCategory, onSelectApplication }) {
   return (
@@ -11,14 +12,14 @@ export default function CollectionDiscovery({ onSelectCategory, onSelectApplicat
         <div className="text-left max-w-2xl space-y-4">
           <div className="inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-stone-accent">
             <span className="w-6 h-px bg-stone-accent/40" />
-            <span>Slab Collections</span>
+            <span>Galaxy Stone Collections</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold">
-            Six families <em className="italic font-light opacity-80">of stone,</em> <br />
-            one standard.
+            Premium Granite &amp; <br />
+            <em className="italic font-light opacity-80">Imported Marble Slabs</em>
           </h2>
           <p className="text-sm text-stone-taupe font-sans font-light leading-relaxed max-w-md">
-            Every category here represents years of relationships with quarries — and a single, uncompromising approach to selection.
+            At {BUSINESS_CONFIG.name}, our curated slab collections are hand-selected from the finest quarries to guarantee structural durability for Kerala homes.
           </p>
         </div>
 

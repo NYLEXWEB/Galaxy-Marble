@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { MapPin, Phone, MessageSquare, ShieldCheck, ArrowUp } from "lucide-react";
 import { BUSINESS_CONFIG } from "../config/business";
 import { buildQuoteRequestWhatsAppMessage, openWhatsApp } from "../utils/whatsapp";
@@ -20,20 +21,20 @@ export default function Footer({ onOpenQuoteModal }) {
   return (
     <footer className="bg-stone-dark text-white pt-16 pb-24 lg:pb-12 border-t border-stone-border/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
+
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
-          
+
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="#hero" className="flex flex-col">
+            <Link href="/#hero" className="flex flex-col">
               <span className="font-serif text-3xl font-bold tracking-tight text-white leading-none">
                 GALAXY <span className="italic font-light text-amber-500">Stone</span>
               </span>
               <span className="text-[9px] tracking-[0.32em] uppercase font-sans font-semibold text-stone-bg/60 mt-1">
                 Marble · Granite · Tile
               </span>
-            </a>
+            </Link>
 
             <p className="text-xs text-stone-border leading-relaxed max-w-sm">
               Digital Showroom & Product Catalogue for natural granite slabs, imported white marble, kitchen countertops, and staircase stone solutions.
@@ -51,12 +52,13 @@ export default function Footer({ onOpenQuoteModal }) {
               Navigation
             </h4>
             <ul className="space-y-2 text-xs text-stone-border">
-              <li><a href="#hero" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#collections" className="hover:text-white transition-colors">Collections</a></li>
-              <li><a href="#catalogue" className="hover:text-white transition-colors">Products</a></li>
-              <li><a href="#projects" className="hover:text-white transition-colors">Our Work</a></li>
-              <li><a href="#reviews" className="hover:text-white transition-colors">Reviews</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><Link href="/#hero" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/#collections" className="hover:text-white transition-colors">Collections</Link></li>
+              <li><Link href="/#catalogue" className="hover:text-white transition-colors">Products</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
+              <li><Link href="/gallery" className="hover:text-white transition-colors">Our Work</Link></li>
+              <li><Link href="/#about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/#contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 
