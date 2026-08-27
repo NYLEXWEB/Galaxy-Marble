@@ -201,6 +201,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`}>
       <head>
+        <link rel="icon" type="image/png" href="/images/galaxy_granites_logo.png" />
+        <link rel="apple-touch-icon" href="/images/galaxy_granites_logo.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
