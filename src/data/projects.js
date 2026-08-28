@@ -6,7 +6,7 @@ export const GALLERY_IMAGES = [
         id: "gal-showroom-1",
         title: "Galaxy Granite & Marble Showroom Exterior",
         stoneName: "Mukkam Showroom",
-        image: "/images/showroom_day.jpg"
+        image: "/images/showroom_day.png"
     },
     {
         id: "gal-gallery-1",

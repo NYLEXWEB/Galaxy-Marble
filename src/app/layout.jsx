@@ -56,7 +56,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/images/showroom_day.jpg",
+        url: "/images/x.jpg",
         width: 1200,
         height: 630,
         alt: "Galaxy Granite & Marble Showroom Exterior",
@@ -67,7 +67,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Galaxy Granite & Marble Showroom",
     description: "Premium granite and marble collections in Mukkam, Kerala.",
-    images: ["/images/showroom_day.jpg"],
+    images: ["/images/showroom_day.png"],
   },
   robots: {
     index: true,
@@ -98,8 +98,8 @@ export default function RootLayout({ children }) {
     "@id": "https://galaxygranites.co.in/#localbusiness",
     "name": BUSINESS_CONFIG.name,
     "image": [
-      "https://galaxygranites.co.in/images/showroom_day.jpg",
-      "https://galaxygranites.co.in/images/showroom_night.jpg"
+      "https://galaxygranites.co.in/images/showroom_day.png",
+      "https://galaxygranites.co.in/images/showroom_night.png"
     ],
     "telephone": BUSINESS_CONFIG.contact.phoneDisplay,
     "url": "https://galaxygranites.co.in",

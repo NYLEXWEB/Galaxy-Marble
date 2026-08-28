@@ -15,9 +15,9 @@ export default function AboutSection() {
             <div className="absolute -inset-2 bg-gradient-to-tr from-[#A8875A]/20 to-transparent rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-all duration-700" />
             <div className="relative overflow-hidden rounded-2xl border border-[#DED8CF]/60 shadow-xl aspect-4/5 lg:aspect-[4/3]">
               <picture className="w-full h-full block">
-                <source srcSet="/images/showroom_mobile.jpg" media="(max-width: 1023px)" />
+                <source srcSet="/images/showroom_mobile.png" media="(max-width: 1023px)" />
                 <img
-                  src="/images/showroom_day.jpg"
+                  src="/images/showroom_day.png"
                   alt="Galaxy Granite & Marble premium slab inventory showroom in Mukkam, Kerala"
                   className="w-full h-full object-cover object-left lg:object-center transform group-hover:scale-105 transition-transform duration-700"
                 />

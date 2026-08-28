@@ -20,14 +20,14 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         {/* Mobile View Portrait Image */}
         <img
-          src="/images/showroom_mobile.jpg"
+          src="/images/showroom_mobile.png"
           alt="Galaxy Granite & Marble physical showroom in Mukkam, Kozhikode, Kerala - Mobile View"
           className="lg:hidden absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Desktop View Video */}
         <video
           src="/images/showroom_bg.webm"
-          poster="/images/showroom_day.jpg"
+          poster="/images/showroom_day.png"
           autoPlay
           loop
           muted
